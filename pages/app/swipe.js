@@ -1,7 +1,7 @@
-export default function Home() {
+export default function SwipePage() {
   return (
     <div>
-      <div class="title has-text-white has-text-centered">Home</div>
+      <div class="title has-text-white has-text-centered">Swipe</div>
       <div class="hero-body columns is-vcentered is-centered">
         <div className="column has-text-centered">
           <p>Column 1</p>

@@ -19,11 +19,14 @@ export default function App({
           href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
         ></link>
       </Head>
-      <NavBar />
-      <div className="pt-12">
-        <Component {...pageProps} />
-      </div>
-      <Footer />
+      <section class="hero is-fullheight has-background-info">
+        <NavBar />
+        <div className="pt-12">
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </section>
+
       {/* </SessionProvider> */}
     </div>
   );

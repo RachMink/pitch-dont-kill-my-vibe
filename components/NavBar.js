@@ -5,27 +5,34 @@ const NavBar = () => {
   // const session = useSession();
 
   return (
-    <nav
-      class="navbar"
-      role="navigation"
-      aria-label="main navigation"
-      style={{ borderBottom: "1px solid lightgrey" }}
-    >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          Pitch, don't kill my vibe.
-        </a>
-      </div>
-      <Link className="navbar-item" href="/">
-        Home
-      </Link>
-      <div className="navbar-menu">
-        <div className="navbar-start"></div>
-      </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {/* {session.data ? (
+    <div class="hero-head has-background-info-light">
+      <nav
+        className="navbar"
+        role="navigation"
+        aria-label="main navigation"
+        style={{ borderBottom: "1px solid lightgrey" }}
+      >
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            <div class="navbar-brand">
+              <Link class="navbar-item" href="/">
+                Pitch, don't kill my vibe.
+              </Link>
+            </div>
+            <Link className="navbar-item" href="/app/swipe">
+              Swipe
+            </Link>
+            <Link className="navbar-item" href="/app/pitch">
+              Pitch
+            </Link>
+            <Link className="navbar-item" href="/app/likes">
+              Likes
+            </Link>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                {/* {session.data ? (
               <>
                 Signed in as&nbsp;<i>{session.data?.user?.email}</i>
                 <button
@@ -43,10 +50,12 @@ const NavBar = () => {
                 </button>
               </>
             )} */}
-          </div>
+              </div>
+            </div>
+          </div>{" "}
         </div>
-      </div>
-    </nav>
+      </nav>{" "}
+    </div>
   );
 };
 

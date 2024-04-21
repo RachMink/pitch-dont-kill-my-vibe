@@ -1,13 +1,10 @@
 const Footer = () => {
   return (
-    <footer class="footer">
-      <div class="has-text-centered">
-        <p>
-          <strong>Pitch, don't kill my vibe.</strong>{" "}
-          <p>An Altamash Ali & Rachel Minkowitz Project.</p>
-        </p>
+    <div class="hero-footer has-background-success-light	">
+      <div class="has-text-centered has-text-black">
+        Project By Altamash Ali & Rachel Minkowitz
       </div>
-    </footer>
+    </div>
   );
 };
 

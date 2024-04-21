@@ -8,7 +8,9 @@ export default function SwipePage() {
 
       <div class="hero-body columns is-vcentered is-centered">
         <div className="column has-text-centered">
-          <p>Column 1</p>
+          <figure>
+            <img src="https://dummyimage.com/450x450/ffffff/030303&text=This+is+a+pitch."></img>
+          </figure>
         </div>
         <div className="column has-text-centered">
           <p>Column 2</p>

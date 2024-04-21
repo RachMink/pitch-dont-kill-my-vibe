@@ -16,7 +16,7 @@ const NavBar = () => {
           <div className="navbar-start">
             <div class="navbar-brand">
               <Link class="navbar-item" href="/">
-                Pitch, don't kill my vibe.
+                <strong>Pitch, don't kill my vibe.</strong>
               </Link>
             </div>
             <Link className="navbar-item" href="/app/swipe">

@@ -1,4 +1,9 @@
 export default function SwipePage() {
+  //   let pitchText =
+  //     "A flying car which can transport you from point A to point B";
+  //   let words = pitchText.split(" ");
+  //   let result = words.join("+");
+
   return (
     <div>
       <div class="title has-text-white has-text-centered">Swipe</div>
@@ -9,7 +14,10 @@ export default function SwipePage() {
       <div class="hero-body columns is-vcentered is-centered">
         <div className="column has-text-centered">
           <figure>
-            <img src="https://dummyimage.com/450x450/ffffff/030303&text=This+is+a+pitch."></img>
+            <img
+              //   src={`https://dummyimage.com/450x450/ffffff/030303&text=${result}`}
+              src="https://dummyimage.com/400x400/ffffff/030303&text=This+is+a+pitch."
+            ></img>
           </figure>
         </div>
         <div className="column has-text-centered">

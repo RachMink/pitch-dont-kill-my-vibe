@@ -21,9 +21,7 @@ export default function App({
       </Head>
       <section class="hero is-fullheight has-background-info">
         <NavBar />
-        <div className="pt-12">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <Footer />
       </section>
 

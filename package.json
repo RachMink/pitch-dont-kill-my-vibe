@@ -6,15 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.1"
+    "next": "14.2.1",
+    "next-auth": "^4.24.6"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.2.1"
+    "eslint-config-next": "14.2.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5"
   }
 }

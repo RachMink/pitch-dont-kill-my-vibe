@@ -1,40 +1,4 @@
-import PitchCard from "@/components/PitchCard";
-
 export default function LikesPage() {
-  let sampleLikes = [
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "6",
-    },
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "-1",
-    },
-  ];
-  let sampleDislikes = [
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "6",
-    },
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "-1",
-    },
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "-1",
-    },
-  ];
   return (
     <div>
       <div class="title has-text-white has-text-centered mt-6">My Likes</div>
@@ -50,13 +14,8 @@ export default function LikesPage() {
             <PitchCard samplePitch={samplePitch} />
           ))}
         </div>
-        <div className="column has-text-centered mt-2 ml-6 mr-6 mb-6">
-          <p class="is-size-4 has-text-white has-text-weight-semibold pb-2">
-            Disliked Pitches
-          </p>
-          {sampleDislikes.map((samplePitch, index) => (
-            <PitchCard samplePitch={samplePitch} />
-          ))}{" "}
+        <div className="column has-text-centered">
+          <p>Column 2</p>
         </div>
       </div>
     </div>

@@ -9,8 +9,8 @@ export default function SwipePage() {
 
   return (
     <div>
-      <div class="title has-text-white has-text-centered">Swipe</div>
-      <div class="subtitle has-text-white has-text-centered">
+      <div className="title has-text-white has-text-centered">Swipe</div>
+      <div className="subtitle has-text-white has-text-centered">
         Like, dislike, or comment on new ideas.
       </div>
 

@@ -1,13 +1,24 @@
+import { useState, useEffect } from "react";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import firebaseApp from "../firebase";
 import "@/styles/globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // We track the auth state to reset firebaseUi if the user signs out.
+    return onAuthStateChanged(getAuth(firebaseApp), (user) => {
+      setUser(user);
+    });
+  }, []);
+
   return (
     <div>
       {/* <SessionProvider session={session}> */}
@@ -21,7 +32,7 @@ export default function App({
       </Head>
       <section class="hero is-fullheight has-background-info">
         <NavBar />
-        <Component {...pageProps} />
+        <Component user={user} {...pageProps} />
         <Footer />
       </section>
 

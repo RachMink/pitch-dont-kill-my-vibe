@@ -5,7 +5,7 @@ const NavBar = () => {
   // const session = useSession();
 
   return (
-    <div class="hero-head has-background-info-light">
+    <div className="hero-head has-background-info-light">
       <nav
         className="navbar"
         role="navigation"
@@ -14,8 +14,8 @@ const NavBar = () => {
       >
         <div className="navbar-menu">
           <div className="navbar-start">
-            <div class="navbar-brand">
-              <Link class="navbar-item" href="/">
+            <div className="navbar-brand">
+              <Link className="navbar-item" href="/">
                 <strong>Pitch, don't kill my vibe.</strong>
               </Link>
             </div>
@@ -29,14 +29,14 @@ const NavBar = () => {
               Likes
             </Link>
           </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
                 {/* {session.data ? (
               <>
                 Signed in as&nbsp;<i>{session.data?.user?.email}</i>
                 <button
-                  class="button is-primary ml-3"
+                  className="button is-primary ml-3"
                   onClick={() => signOut()}
                 >
                   Sign out
@@ -45,7 +45,7 @@ const NavBar = () => {
             ) : (
               <>
                 Signed out.
-                <button class="button is-primary ml-3" onClick={() => signIn()}>
+                <button className="button is-primary ml-3" onClick={() => signIn()}>
                   Sign in
                 </button>
               </>

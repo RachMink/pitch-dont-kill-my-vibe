@@ -59,7 +59,7 @@ const NavBar = (props) => {
                     </>
                   ) : (
                     <Link
-                      className="navbar-item button is-secondary ml-3"
+                      className="navbar-item button is-secondary ml-3  mb-4"
                       href="/login"
                     >
                       Sign In

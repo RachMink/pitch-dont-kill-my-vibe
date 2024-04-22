@@ -41,8 +41,8 @@ export default function LikesPage() {
       <div class="subtitle has-text-white has-text-centered">
         Pitches you've reacted to.
       </div>
-      <div class="columns m-5">
-        <div className="column has-text-centered m-6">
+      <div class="columns m-6">
+        <div className="column has-text-centered mt-2 ml-6 mr-6 mb-6">
           <p class="is-size-4 has-text-white has-text-weight-semibold pb-2">
             Liked Pitches
           </p>
@@ -50,7 +50,7 @@ export default function LikesPage() {
             <PitchCard samplePitch={samplePitch} />
           ))}
         </div>
-        <div className="column has-text-centered m-6">
+        <div className="column has-text-centered mt-2 ml-6 mr-6 mb-6">
           <p class="is-size-4 has-text-white has-text-weight-semibold pb-2">
             Disliked Pitches
           </p>

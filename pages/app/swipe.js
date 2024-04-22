@@ -15,18 +15,18 @@ export default function SwipePage() {
       </div>
 
       <div
-        class="hero-body"
+        className="hero-body"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <div className="has-text-centered">
           <Pitch pitchBody={pitchText} pitchAuthor={pitchAuthor} />
-          <div class="columns m-0 mt-4">
+          <div className="columns m-0 mt-4">
             <input
-              class="input is-four-fifths column"
+              className="input is-four-fifths column"
               type="text"
               placeholder="Enter comment"
             />
-            <button class="button is-primary ml-1">Submit</button>
+            <button className="button is-primary ml-1">Submit</button>
           </div>
         </div>
       </div>

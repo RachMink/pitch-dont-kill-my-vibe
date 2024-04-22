@@ -26,11 +26,11 @@ export default function PitchPage() {
       </div>
       <div className="hero-body columns is-vcentered is-centered">
         <div className="column has-text-centered is-three-fifths">
-          <p class="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             My current pitches
           </p>
           {samplePitches.map((samplePitch, index) => (
-            <PitchCard samplePitch={samplePitch} />
+            <PitchCard samplePitch={samplePitch} key={index} />
           ))}
         </div>
         <div className="column has-text-centered has-background-link-dark box m-2">

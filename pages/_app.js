@@ -24,12 +24,8 @@ export default function App({
       <Head>
         <title>Pitch, don't kill my vibe.</title>
         <meta name="description" content="Pitch, don't kill my vibe homepage" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-        ></link>
       </Head>
-      <section class="hero is-fullheight has-background-info">
+      <section className="hero is-fullheight has-background-info">
         <NavBar user={user} />
         <Component {...pageProps} />
         <Footer />

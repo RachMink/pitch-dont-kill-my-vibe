@@ -22,7 +22,7 @@ const NavBar = () => {
             <Link className="navbar-item" href="/app/swipe">
               Swipe
             </Link>
-            <Link className="navbar-item" href="/app/pitch">
+            <Link className="navbar-item" href="/app/pitches">
               Pitch
             </Link>
             <Link className="navbar-item" href="/app/likes">

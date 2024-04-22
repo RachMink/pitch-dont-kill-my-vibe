@@ -14,15 +14,20 @@ export default function SwipePage() {
         Like, dislike, or comment on new ideas.
       </div>
 
-      <div class="hero-body columns is-vcentered is-centered">
-        <div
-          className="column has-text-centered"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
+      <div
+        class="hero-body"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <div className="has-text-centered">
           <Pitch pitchBody={pitchText} pitchAuthor={pitchAuthor} />
-        </div>
-        <div className="column has-text-centered">
-          <p>Column 2</p>
+          <div class="columns m-0 mt-1">
+            <input
+              class="input is-four-fifths column"
+              type="text"
+              placeholder="Enter comment"
+            />
+            <button class="button is-primary ml-1">Submit</button>
+          </div>
         </div>
       </div>
     </div>

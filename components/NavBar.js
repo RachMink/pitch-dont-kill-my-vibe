@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 
-const NavBar = (props ) => {
+const NavBar = (props) => {
   // const session = useSession();
   // const [user, setUser] = useState(null);
 
@@ -15,7 +15,6 @@ const NavBar = (props ) => {
 
   //   return () => unsubscribe();
   // }, []);
-
 
   return (
     <div className="hero-head has-background-info-light">
@@ -48,18 +47,23 @@ const NavBar = (props ) => {
                 <div className="buttons">
                   {props.user ? (
                     <>
-                      <span className="mr-2">Welcome, {props.user.email}</span>
+                      <span className="mr-2 mb-3">
+                        Welcome, {props.user.email}
+                      </span>
                       <button
-                        className="button is-secondary"
+                        className="button is-secondary mb-4"
                         onClick={() => signOut(getAuth())}
                       >
                         Sign out
                       </button>
                     </>
                   ) : (
-                      <Link className="navbar-item button is-secondary ml-3" href="/login">
-                        Sign In
-                      </Link>
+                    <Link
+                      className="navbar-item button is-secondary ml-3"
+                      href="/login"
+                    >
+                      Sign In
+                    </Link>
                   )}
                 </div>
               </div>

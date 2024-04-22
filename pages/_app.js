@@ -30,7 +30,7 @@ export default function App({
         ></link>
       </Head>
       <section class="hero is-fullheight has-background-info">
-        <NavBar user={user}/>
+        <NavBar user={user} />
         <Component {...pageProps} />
         <Footer />
       </section>

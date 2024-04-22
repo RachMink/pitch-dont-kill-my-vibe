@@ -20,7 +20,7 @@ export default function SwipePage() {
       >
         <div className="has-text-centered">
           <Pitch pitchBody={pitchText} pitchAuthor={pitchAuthor} />
-          <div class="columns m-0 mt-1">
+          <div class="columns m-0 mt-4">
             <input
               class="input is-four-fifths column"
               type="text"

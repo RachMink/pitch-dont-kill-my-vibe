@@ -1,16 +1,62 @@
+import PitchCard from "@/components/PitchCard";
+
 export default function LikesPage() {
+  let sampleLikes = [
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+      score: "6",
+    },
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+      score: "-1",
+    },
+  ];
+  let sampleDislikes = [
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+      score: "6",
+    },
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+      score: "-1",
+    },
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+      score: "-1",
+    },
+  ];
   return (
     <div>
-      <div class="title has-text-white has-text-centered">My Likes</div>
+      <div class="title has-text-white has-text-centered mt-6">My Likes</div>
       <div class="subtitle has-text-white has-text-centered">
         Pitches you've reacted to.
       </div>
-      <div class="hero-body columns is-vcentered is-centered">
-        <div className="column has-text-centered">
-          <p>Column 1</p>
+      <div class="columns m-5">
+        <div className="column has-text-centered m-6">
+          <p class="is-size-4 has-text-white has-text-weight-semibold pb-2">
+            Liked Pitches
+          </p>
+          {sampleLikes.map((samplePitch, index) => (
+            <PitchCard samplePitch={samplePitch} />
+          ))}
         </div>
-        <div className="column has-text-centered">
-          <p>Column 2</p>
+        <div className="column has-text-centered m-6">
+          <p class="is-size-4 has-text-white has-text-weight-semibold pb-2">
+            Disliked Pitches
+          </p>
+          {sampleDislikes.map((samplePitch, index) => (
+            <PitchCard samplePitch={samplePitch} />
+          ))}{" "}
         </div>
       </div>
     </div>

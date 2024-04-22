@@ -22,13 +22,16 @@ export default function PitchPage() {
       <div class="subtitle has-text-white has-text-centered">
         Create new pitches or view old ones.
       </div>
-      <div class="hero-body columns is-vcentered is-centered">
+      <div class="columns m-5">
         <div className="column has-text-centered is-three-fifths">
+          <p class="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+            My current pitches
+          </p>
           {samplePitches.map((samplePitch, index) => (
             <PitchCard samplePitch={samplePitch} />
           ))}
         </div>
-        <div className="column has-text-centered has-background-link-dark box m-2">
+        <div className="column has-text-centered">
           <p class="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             Pitch a new idea
           </p>
@@ -37,7 +40,7 @@ export default function PitchPage() {
               Enter a name for your idea (optional)
             </div> */}
             <input
-              class="input is-medium control"
+              class="input is-medium control mt-2"
               type="text"
               placeholder="Title"
               name="pitchName"

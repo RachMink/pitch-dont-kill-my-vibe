@@ -1,8 +1,21 @@
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
-const NavBar = () => {
+const NavBar = (props ) => {
   // const session = useSession();
+  // const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   const auth = getAuth();
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     setUser(user);
+  //   });
+
+  //   return () => unsubscribe();
+  // }, []);
+
 
   return (
     <div className="hero-head has-background-info-light">
@@ -32,24 +45,23 @@ const NavBar = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                {/* {session.data ? (
-              <>
-                Signed in as&nbsp;<i>{session.data?.user?.email}</i>
-                <button
-                  className="button is-primary ml-3"
-                  onClick={() => signOut()}
-                >
-                  Sign out
-                </button>
-              </>
-            ) : (
-              <>
-                Signed out.
-                <button className="button is-primary ml-3" onClick={() => signIn()}>
-                  Sign in
-                </button>
-              </>
-            )} */}
+                <div className="buttons">
+                  {props.user ? (
+                    <>
+                      <span className="mr-2">Welcome, {props.user.email}</span>
+                      <button
+                        className="button is-secondary"
+                        onClick={() => signOut(getAuth())}
+                      >
+                        Sign out
+                      </button>
+                    </>
+                  ) : (
+                      <Link className="navbar-item button is-secondary ml-3" href="/login">
+                        Sign In
+                      </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>{" "}

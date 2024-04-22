@@ -1,13 +1,30 @@
+import PitchCard from "@/components/PitchCard";
+
 export default function PitchPage() {
+  let samplePitches = [
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+    },
+    {
+      title: "This is a test",
+      description: "This is the body",
+      date: "01/02/2024",
+    },
+  ];
+
   return (
     <div>
-      <div class="title has-text-white has-text-centered">My Pitches</div>
+      <div class="title has-text-white has-text-centered mt-6">My Pitches</div>
       <div class="subtitle has-text-white has-text-centered">
         Create new pitches or view old ones.
       </div>
       <div class="hero-body columns is-vcentered is-centered">
         <div className="column has-text-centered is-three-fifths">
-          <p>Column 1</p>
+          {samplePitches.map((samplePitch, index) => (
+            <PitchCard samplePitch={samplePitch} />
+          ))}
         </div>
         <div className="column has-text-centered has-background-link-dark box m-2">
           <p class="is-size-4 has-text-white has-text-weight-semibold	pb-2">

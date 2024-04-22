@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="hero-body columns is-vcentered is-centered">
@@ -8,6 +10,9 @@ export default function Home() {
         <p className="subtitle has-text-white">
           A place for founders and investors to level ideas.
         </p>
+        <Link href="/login">
+          <button className="button">Start Here</button>
+        </Link>
       </div>
     </div>
   );

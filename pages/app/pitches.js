@@ -6,11 +6,13 @@ export default function PitchPage() {
       title: "This is a test",
       description: "This is the body",
       date: "01/02/2024",
+      score: "6",
     },
     {
       title: "This is a test",
       description: "This is the body",
       date: "01/02/2024",
+      score: "-1",
     },
   ];
 

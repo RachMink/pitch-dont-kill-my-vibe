@@ -1,4 +1,4 @@
-const PitchCard = (props) => {
+export default function PitchCard(props) {
   const { samplePitch } = props;
   return (
     <div className="box columns m-2 is-vcentered">
@@ -20,6 +20,4 @@ const PitchCard = (props) => {
       </div>
     </div>
   );
-};
-
-export default PitchCard;
+}

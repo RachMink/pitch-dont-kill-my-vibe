@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import "firebaseui/dist/firebaseui.css";
 
-const StyledFirebaseAuth = ({
+export default function StyledFirebaseAuth({
   uiConfig,
   firebaseAuth,
   className,
   uiCallback,
-}) => {
+}) {
   const [firebaseui, setFirebaseui] = useState(null);
   const elementRef = useRef(null);
 
@@ -50,6 +50,4 @@ const StyledFirebaseAuth = ({
   }, [firebaseui, uiConfig]);
 
   return <div className={className} ref={elementRef} />;
-};
-
-export default StyledFirebaseAuth;
+}

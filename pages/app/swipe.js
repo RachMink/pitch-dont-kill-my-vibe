@@ -14,10 +14,7 @@ export default function SwipePage() {
         Like, dislike, or comment on new ideas.
       </div>
 
-      <div
-        className="hero-body"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div className="has-text-centered">
           <Pitch pitchBody={pitchText} pitchAuthor={pitchAuthor} />
           <div className="columns m-0 mt-4">

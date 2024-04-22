@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 
-const NavBar = (props) => {
+export default function NavBar(props) {
   // const session = useSession();
   // const [user, setUser] = useState(null);
 
@@ -73,6 +73,4 @@ const NavBar = (props) => {
       </nav>{" "}
     </div>
   );
-};
-
-export default NavBar;
+}

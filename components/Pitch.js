@@ -1,4 +1,4 @@
-const Pitch = ({ pitchBody, pitchAuthor }) => {
+export default function Pitch({ pitchBody, pitchAuthor }) {
   return (
     <div
       className="card"
@@ -31,6 +31,4 @@ const Pitch = ({ pitchBody, pitchAuthor }) => {
       </footer>
     </div>
   );
-};
-
-export default Pitch;
+}

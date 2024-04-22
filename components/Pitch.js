@@ -20,10 +20,13 @@ const Pitch = ({ pitchBody, pitchAuthor }) => {
         style={{ position: "absolute", bottom: "0", width: "100%" }}
       >
         <a href="#" class="card-footer-item has-background-danger">
-          Dislike
+          <img
+            src="/cross-small.svg"
+            style={{ height: "100%", width: "20%" }}
+          ></img>
         </a>
         <a href="#" class="card-footer-item has-background-success">
-          Like
+          <img src="/heart.svg" style={{ height: "100%", width: "15%" }}></img>
         </a>
       </footer>
     </div>

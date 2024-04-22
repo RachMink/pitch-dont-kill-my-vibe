@@ -10,7 +10,31 @@ export default function PitchPage() {
           <p>Column 1</p>
         </div>
         <div className="column has-text-centered">
-          <p>Column 2</p>
+          <p class="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+            Pitch a new idea
+          </p>
+          <form onSubmit={(event) => console.log("test")}>
+            {/* <div class="is-size-5 pt-2">
+              Enter a name for your idea (optional)
+            </div> */}
+            <input
+              class="input is-medium control"
+              type="text"
+              placeholder="Title"
+              name="pitchName"
+            />
+            <div class="pt-2"></div>
+            {/* <div class="is-size-5 pt-2">Describe your idea in few lines</div> */}
+            <textarea
+              class="textarea is-medium control"
+              type="text"
+              placeholder="Description"
+              name="pitchDescription"
+            />
+            <div class="has-text-centered pt-4 pb-4 control">
+              <button class="button is-primary">Pitch Idea</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import Pitch from "@/components/Pitch";
 export default function SwipePage() {
   let pitchText =
     "A flying car which can transport you from point A to point B";
-  let pitchAuthor = "Jim Attwood";
+  let pitchAuthor = "Smarty Pants Johnson";
   //   let words = pitchText.split(" ");
   //   let result = words.join("+");
 

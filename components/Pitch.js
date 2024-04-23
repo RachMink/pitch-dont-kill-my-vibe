@@ -1,4 +1,4 @@
-export default function Pitch({ pitchBody, pitchAuthor }) {
+export default function Pitch({ pitch }) {
   return (
     <div
       className="card"
@@ -12,22 +12,30 @@ export default function Pitch({ pitchBody, pitchAuthor }) {
       }}
     >
       <div className="card-content">
-        <p className="title">“{pitchBody}”</p>
-        <p className="subtitle mt-2">{pitchAuthor}</p>
+        <p className="title">“{pitch.pitchDescription}”</p>
+        <p className="subtitle mt-2">{pitch.pitchCreatorName}</p>
       </div>
       <footer
         className="card-footer"
         style={{ position: "absolute", bottom: "0", width: "100%" }}
       >
-        <a href="#" className="card-footer-item has-background-danger">
+        <button
+          href="#"
+          className="button card-footer-item has-background-danger p-0"
+          onClick={(event) => console.log("disliked")}
+        >
           <img
             src="/cross-small.svg"
-            style={{ height: "100%", width: "20%" }}
+            style={{ height: "100%", width: "15%" }}
           ></img>
-        </a>
-        <a href="#" className="card-footer-item has-background-success">
-          <img src="/heart.svg" style={{ height: "100%", width: "15%" }}></img>
-        </a>
+        </button>
+        <button
+          href="#"
+          className="button card-footer-item has-background-success p-0"
+          onClick={(event) => console.log("liked")}
+        >
+          <img src="/heart.svg" style={{ height: "100%", width: "13%" }}></img>
+        </button>
       </footer>
     </div>
   );

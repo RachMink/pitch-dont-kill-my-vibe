@@ -1,11 +1,28 @@
 import Pitch from "@/components/Pitch";
+import { useState, useEffect } from "react";
+import * as db from "../../database";
 
 export default function SwipePage() {
+  const [pitches, setPitches] = useState([]);
+
+  const getUnreadPitches = async () => {
+    const allPitches = await db.getAllPitches();
+    setPitches(allPitches);
+  };
+
+  useEffect(() => {
+    getUnreadPitches();
+  }, []);
+
   let pitchText =
     "A flying car which can transport you from point A to point B";
   let pitchAuthor = "Smarty Pants Johnson";
   //   let words = pitchText.split(" ");
   //   let result = words.join("+");
+  const samplePitch = {
+    pitchDescription: pitchText,
+    pitchCreatorName: pitchAuthor,
+  };
 
   return (
     <div>
@@ -15,17 +32,21 @@ export default function SwipePage() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div className="has-text-centered">
-          <Pitch pitchBody={pitchText} pitchAuthor={pitchAuthor} />
-          <div className="columns m-0 mt-4">
-            <input
-              className="input is-four-fifths column"
-              type="text"
-              placeholder="Enter comment"
-            />
-            <button className="button is-primary ml-1">Submit</button>
+        {pitches.length > 0 ? (
+          <div className="has-text-centered">
+            <Pitch pitch={pitches[0]} />
+            <div className="columns m-0 mt-4">
+              <input
+                className="input is-four-fifths column"
+                type="text"
+                placeholder="Enter comment"
+              />
+              <button className="button is-primary ml-1">Submit</button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <p>Loading pitches</p>
+        )}
       </div>
     </div>
   );

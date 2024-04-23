@@ -18,6 +18,7 @@ export default function PitchPage(props) {
     e.preventDefault();
 
     await db.createPitch({
+      // TODO: store id with pitch?
       pitchCreatorEmail: props.user.email,
       pitchCreatorName: props.user.displayName,
       pitchTitle: e.target["pitch-title"].value,

@@ -1,14 +1,16 @@
 import * as db from "../database";
 
-export default function Pitch({ pitch, user }) {
+export default function Pitch({ pitch, user, getUnreadPitches }) {
   const onPitchLiked = async () => {
     await db.likePitch(pitch.id, user);
     // load next pitch
+    getUnreadPitches();
   };
 
   const onPitchDisliked = async () => {
     await db.dislikePitch(pitch.id, user);
     // load next pitch
+    getUnreadPitches();
   };
 
   return (

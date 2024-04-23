@@ -7,7 +7,11 @@ export default function SwipePage(props) {
 
   const getUnreadPitches = async () => {
     const allPitches = await db.getAllPitches();
-    setPitches(allPitches);
+    const unreadPitches = allPitches.filter(
+      (pitch) => !pitch.viewedBy.includes(props.user.email)
+    );
+    console.log(unreadPitches);
+    setPitches(unreadPitches);
   };
 
   useEffect(() => {
@@ -34,7 +38,11 @@ export default function SwipePage(props) {
       <div style={{ display: "flex", justifyContent: "center" }}>
         {pitches.length > 0 ? (
           <div className="has-text-centered">
-            <Pitch pitch={pitches[0]} user={props.user.email} />
+            <Pitch
+              pitch={pitches[0]}
+              user={props.user.email}
+              getUnreadPitches={getUnreadPitches}
+            />
             <div className="columns m-0 mt-4">
               <input
                 className="input is-four-fifths column"

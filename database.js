@@ -28,8 +28,6 @@ export const getAllPitches = async () => {
     });
   });
 
-  //   console.log(result);
-
   return result;
 };
 

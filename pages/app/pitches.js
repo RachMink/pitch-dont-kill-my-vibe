@@ -60,7 +60,6 @@ export default function PitchPage(props) {
           <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             Pitch a new idea
           </p>
-          {/* TODO: clear form fields after submit */}
           <form onSubmit={onSubmit}>
             {/* <div className="is-size-5 pt-2">
               Enter a name for your idea (optional)

@@ -3,8 +3,6 @@ import * as db from "../database";
 export default function PitchCard({ pitch, getPitches }) {
   const pitchScore = pitch.likes?.length - pitch.dislikes?.length;
 
-  // TODO: Don't show score and delete button as VC role
-
   const formatDate = (now) => {
     const current = new Date(now);
     const yyyy = current.getFullYear();

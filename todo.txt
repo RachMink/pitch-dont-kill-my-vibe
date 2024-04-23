@@ -1,2 +1,6 @@
 TODO:
 - remove session provider next/auth (not used?)
+- integrate comments (e.g. comments: [{ commenterName: x, commentDate: x, commentBody: x}])
+- do role management
+- clear form fields after submit?
+- don't show score and delete button on pitch card as VC role

@@ -2,7 +2,7 @@ import Pitch from "@/components/Pitch";
 import { useState, useEffect } from "react";
 import * as db from "../../database";
 
-export default function SwipePage() {
+export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
 
   const getUnreadPitches = async () => {
@@ -34,7 +34,7 @@ export default function SwipePage() {
       <div style={{ display: "flex", justifyContent: "center" }}>
         {pitches.length > 0 ? (
           <div className="has-text-centered">
-            <Pitch pitch={pitches[0]} />
+            <Pitch pitch={pitches[0]} user={props.user.email} />
             <div className="columns m-0 mt-4">
               <input
                 className="input is-four-fifths column"

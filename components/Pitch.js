@@ -1,4 +1,16 @@
-export default function Pitch({ pitch }) {
+import * as db from "../database";
+
+export default function Pitch({ pitch, user }) {
+  const onPitchLiked = async () => {
+    await db.likePitch(pitch.id, user);
+    // load next pitch
+  };
+
+  const onPitchDisliked = async () => {
+    await db.dislikePitch(pitch.id, user);
+    // load next pitch
+  };
+
   return (
     <div
       className="card"
@@ -22,7 +34,7 @@ export default function Pitch({ pitch }) {
         <button
           href="#"
           className="button card-footer-item has-background-danger p-0"
-          onClick={(event) => console.log("disliked")}
+          onClick={() => onPitchDisliked()}
         >
           <img
             src="/cross-small.svg"
@@ -32,7 +44,7 @@ export default function Pitch({ pitch }) {
         <button
           href="#"
           className="button card-footer-item has-background-success p-0"
-          onClick={(event) => console.log("liked")}
+          onClick={() => onPitchLiked()}
         >
           <img src="/heart.svg" style={{ height: "100%", width: "13%" }}></img>
         </button>

@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  arrayUnion,
 } from "firebase/firestore";
 
 const db = getFirestore(firebaseApp);
@@ -36,18 +37,14 @@ export const deletePitch = async (pitchId) => {
   await deleteDoc(doc(db, "pitches", pitchId));
 };
 
-// export const likePitch = async (pitchId) => {
-//   const docSnap = await getDoc(doc(db, "pitches", pitchId));
+export const likePitch = async (pitchId, likerName) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+    likes: arrayUnion(likerName),
+  });
+};
 
-//   if (docSnap.exists()) {
-//     const docData = docSnap.data();
-
-//     await updateDoc(doc(db, "pitches", pitchId), {
-//       likes: docData.likes + 1,
-//     });
-//   }
-// };
-
-// export const dislikePitch = async (pitchId) = {
-
-// };
+export const dislikePitch = async (pitchId, dislikerName) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+    dislikes: arrayUnion(dislikerName),
+  });
+};

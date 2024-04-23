@@ -40,11 +40,13 @@ export const deletePitch = async (pitchId) => {
 export const likePitch = async (pitchId, likerName) => {
   await updateDoc(doc(db, "pitches", pitchId), {
     likes: arrayUnion(likerName),
+    viewedBy: arrayUnion(likerName),
   });
 };
 
 export const dislikePitch = async (pitchId, dislikerName) => {
   await updateDoc(doc(db, "pitches", pitchId), {
     dislikes: arrayUnion(dislikerName),
+    viewedBy: arrayUnion(dislikerName),
   });
 };

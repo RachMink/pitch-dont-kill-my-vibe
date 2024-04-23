@@ -1,20 +1,36 @@
 import PitchCard from "@/components/PitchCard";
+import * as db from "../../database";
+import { useState, useEffect } from "react";
 
-export default function PitchPage() {
-  let samplePitches = [
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "6",
-    },
-    {
-      title: "This is a test",
-      description: "This is the body",
-      date: "01/02/2024",
-      score: "-1",
-    },
-  ];
+export default function PitchPage(props) {
+  const [pitches, setPitches] = useState([]);
+
+  const getPitches = async () => {
+    const allPitches = await db.getAllPitches();
+    setPitches(allPitches);
+  };
+
+  useEffect(() => {
+    getPitches();
+  }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    await db.createPitch({
+      pitchCreatorEmail: props.user.email,
+      pitchCreatorName: props.user.displayName,
+      pitchTitle: e.target["pitch-title"].value,
+      pitchDescription: e.target["pitch-description"].value,
+      pitchDate: Date.now(),
+      likes: [],
+      dislikes: [],
+      viewedBy: [],
+      comments: [],
+    });
+
+    await getPitches();
+  };
 
   return (
     <div>
@@ -29,15 +45,22 @@ export default function PitchPage() {
           <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             My current pitches
           </p>
-          {samplePitches.map((samplePitch, index) => (
-            <PitchCard samplePitch={samplePitch} key={index} />
-          ))}
+          {pitches.length > 0 ? (
+            pitches.map((pitch, index) => (
+              <PitchCard pitch={pitch} getPitches={getPitches} key={index} />
+            ))
+          ) : (
+            <p className="mt-6 subtitle has-text-white">
+              There are no pitches to display.
+            </p>
+          )}
         </div>
         <div className="column has-text-centered">
           <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             Pitch a new idea
           </p>
-          <form onSubmit={(event) => console.log("test")}>
+          {/* TODO: clear form fields after submit */}
+          <form onSubmit={onSubmit}>
             {/* <div className="is-size-5 pt-2">
               Enter a name for your idea (optional)
             </div> */}
@@ -45,7 +68,7 @@ export default function PitchPage() {
               className="input is-medium control mt-2"
               type="text"
               placeholder="Title"
-              name="pitchName"
+              name="pitch-title"
             />
             <div className="pt-2"></div>
             {/* <div className="is-size-5 pt-2">Describe your idea in few lines</div> */}
@@ -53,7 +76,7 @@ export default function PitchPage() {
               className="textarea is-medium control"
               type="text"
               placeholder="Description"
-              name="pitchDescription"
+              name="pitch-description"
             />
             <div className="has-text-centered pt-4 pb-4 control">
               <button className="button is-primary">Pitch Idea</button>

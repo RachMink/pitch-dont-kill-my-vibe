@@ -27,7 +27,7 @@ export default function App({
       </Head>
       <section className="hero is-fullheight has-background-info">
         <NavBar user={user} />
-        <Component {...pageProps} />
+        <Component {...pageProps} user={user} />
         <Footer />
       </section>
     </div>

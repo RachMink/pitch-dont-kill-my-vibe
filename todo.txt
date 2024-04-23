@@ -1,6 +1,19 @@
 TODO:
 - remove session provider next/auth (not used?)
-- integrate comments (e.g. comments: [{ commenterName: x, commentDate: x, commentBody: x}])
+- integrate comments
+    - e.g. comments: [{ commenterName: x, commentDate: x, commentBody: x}]
+    - VCs can add, edit, delete, comments
 - do role management
+    - Alternative is to have a toggle that switches between VC and founder view
+    - A user can behave as both? They just won't see their own pitches in the swipe tab
 - clear form fields after submit?
 - don't show score and delete button on pitch card as VC role
+- home screen start here button 
+    - If not logged in, navigate to login
+    - If logged in as founder, navigate to pitches
+    - If logged in as VC, navigate to swipe
+- VC sees pitch tab, likes tab
+- Founder only sees pitches tab
+- Update header
+    - if founder ("Pitch don't kill my vibe")
+    - if VC ("Pitch betta have my money")

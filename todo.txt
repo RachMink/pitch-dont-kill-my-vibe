@@ -1,24 +1,43 @@
 TODO:
+
+Main task: Role management
+- Adding a user schema to database may get too complicated
+    - For example, how does user indicate which role they are during sign up 
+    - Are we able to add a field to the styled firebase auth component?
+- Better approach: 
+    - Let user play both roles (VC and Founder)
+    - Add a toggle on the nav bar that lets you switch between VC and founder view
+    - Track this role as a global state
+    - When in founder view, you can add pitches
+    - When in VC view, you can rate other pitches and view your liked pitches
+    - Important note: You will not see your own pitches when swiping
+
+General:
+- Add pitch specific view page
+- clear form fields after submit on swipe page, add pitches page
+- Create logo
+- Update favicon
+- Improve styling
 - remove next-auth from package.json (not used?)
-- integrate comments
-    - e.g. comments: [{ commenterName: x, commentDate: x, commentBody: x}]
-    - VCs can add, edit, delete (need to add a unique id for each comments?), comments
-    - Add comment from swipe page and pitch specific page
-    - Edit and delete from pitch specific page
-- do role management
-    - Alternative is to have a toggle that switches between VC and founder view
-    - A user can behave as both? They just won't see their own pitches in the swipe tab
-- clear form fields after submit?
-- don't show score and delete button on pitch card as VC role
-- home screen start here button 
-    - If not logged in, navigate to login
-    - If logged in as founder, navigate to pitches
-    - If logged in as VC, navigate to swipe
-- VC sees pitch tab, likes tab
-- Founder only sees pitches tab
-    - Can edit, delete, add pitches from this tab
-- Update header
-    - if founder view ("Pitch don't kill my vibe")
-    - if VC view ("Pitch betta have my money")
-- Styling!
-- Logo + favicon
+- Don't need to use API?
+
+VC Todo:
+- Only see swipe tab, likes tab
+- Header says "Pitch betta have my money"?
+- Home page 'Start Here' button navigates you to swipe tab
+- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
+- Be able to add comment from pitch specific page
+- Be able to edit/delete comments from pitch specific page
+    - Need to add unique id to track comments object
+
+Founder Todo:
+- Only sees pitches tab
+- Add edit pitch functionality from pitches tab
+- Sort pitches by highest score?
+- Header says "Pitch don't kill my vibe"?
+- Home page 'Start Here' button navigates you to pitches tab
+- Be able to view comments from pitch specific page
+
+Signed out user Todo:
+- Don't see any tabs
+- Home page 'Start Here' button navigates you to login page

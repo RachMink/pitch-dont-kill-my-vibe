@@ -48,3 +48,9 @@ export const dislikePitch = async (pitchId, dislikerName) => {
     viewedBy: arrayUnion(dislikerName),
   });
 };
+
+export const addComment = async (pitchId, comment) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+    comments: arrayUnion(comment),
+  });
+};

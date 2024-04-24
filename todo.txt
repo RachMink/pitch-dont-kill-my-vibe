@@ -1,8 +1,8 @@
 TODO:
-- remove session provider next/auth (not used?)
+- remove next-auth from package.json (not used?)
 - integrate comments
     - e.g. comments: [{ commenterName: x, commentDate: x, commentBody: x}]
-    - VCs can add, edit, delete, comments
+    - VCs can add, edit, delete (need to add a unique id for each comments?), comments
     - Add comment from swipe page and pitch specific page
     - Edit and delete from pitch specific page
 - do role management
@@ -18,5 +18,7 @@ TODO:
 - Founder only sees pitches tab
     - Can edit, delete, add pitches from this tab
 - Update header
-    - if founder ("Pitch don't kill my vibe")
-    - if VC ("Pitch betta have my money")
+    - if founder view ("Pitch don't kill my vibe")
+    - if VC view ("Pitch betta have my money")
+- Styling!
+- Logo + favicon

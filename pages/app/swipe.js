@@ -18,14 +18,16 @@ export default function SwipePage(props) {
     getUnreadPitches();
   }, []);
 
-  let pitchText =
-    "A flying car which can transport you from point A to point B";
-  let pitchAuthor = "Smarty Pants Johnson";
-  //   let words = pitchText.split(" ");
-  //   let result = words.join("+");
-  const samplePitch = {
-    pitchDescription: pitchText,
-    pitchCreatorName: pitchAuthor,
+  const onSubmit = async (e, pitchId) => {
+    e.preventDefault();
+
+    await db.addComment(pitchId, {
+      // TODO: add unique id for deleting?
+      commenterEmail: props.user.email,
+      commenterName: props.user.displayName,
+      commentBody: e.target["pitch-comment"].value,
+      commentDate: Date.now(),
+    });
   };
 
   return (
@@ -44,12 +46,18 @@ export default function SwipePage(props) {
               getUnreadPitches={getUnreadPitches}
             />
             <div className="columns m-0 mt-4">
-              <input
-                className="input is-four-fifths column"
-                type="text"
-                placeholder="Enter comment"
-              />
-              <button className="button is-primary ml-1">Submit</button>
+              <form
+                onSubmit={(e) => onSubmit(e, pitches[0].id)}
+                style={{ display: "contents" }}
+              >
+                <input
+                  className="input is-four-fifths column"
+                  type="text"
+                  placeholder="Enter comment"
+                  name="pitch-comment"
+                />
+                <button className="button is-primary ml-1">Submit</button>
+              </form>
             </div>
           </div>
         ) : (

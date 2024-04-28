@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { handleSignup , handleLogin } from "../firebase";
+import { handleSignup, handleLogin } from "../firebase";
 import { useRouter } from "next/router";
 
-export default function LoginPage() {
+export default function LoginPage({ userType, setUserType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [userType, setUserType] = useState("");
+  const [userTypeSelection, setUserTypeSelection] = useState("");
   const [existingUser, setExistingUser] = useState(false); // State to track if user exists
   const [error, setError] = useState(""); // State to hold error message
   const router = useRouter();
@@ -21,7 +21,11 @@ export default function LoginPage() {
         console.log("User logged in successfully!");
       } else {
         // If new user, handle signup
-        await handleSignup(email, password, displayName, userType);
+        await handleSignup(email, password, displayName, userTypeSelection);
+        // wait until sign up is clicked to change user type
+        // this is to prevent nav bar from changing before signed in
+        setUserType(userTypeSelection);
+        localStorage.setItem("storedUserType", userTypeSelection);
         router.push("/");
         console.log("User signed up successfully!");
       }
@@ -95,8 +99,10 @@ export default function LoginPage() {
                       <div className="control">
                         <div className="select is-medium is-fullwidth">
                           <select
-                            value={userType}
-                            onChange={(e) => setUserType(e.target.value)}
+                            value={userTypeSelection}
+                            onChange={(e) =>
+                              setUserTypeSelection(e.target.value)
+                            }
                             required
                           >
                             <option value="">Select User Type</option>
@@ -150,4 +156,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

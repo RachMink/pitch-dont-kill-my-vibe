@@ -8,18 +8,19 @@ import { Mukta } from "next/font/google";
 const inter = Mukta({ weight: "700", subsets: ["latin"] });
 
 export default function NavBar(props) {
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleSignOut = () => {
-      signOut( getAuth())
-        .then(() => {
-          router.push("/"); // Redirect to homepage
-        })
-        .catch((error) => {
-          console.error("Error signing out:", error);
-        });
-    };
-
+  const handleSignOut = () => {
+    signOut(getAuth())
+      .then(() => {
+        router.push("/"); // Redirect to homepage
+        props.setUserType("");
+        localStorage.setItem("storedUserType", "");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  };
 
   return (
     <div className="hero-head has-background-white">
@@ -43,15 +44,21 @@ export default function NavBar(props) {
                 </strong>
               </Link>
             </div>
-            <Link className="navbar-item" href="/app/swipe">
-              Swipe
-            </Link>
-            <Link className="navbar-item" href="/app/pitches">
-              Pitch
-            </Link>
-            <Link className="navbar-item" href="/app/likes">
-              Likes
-            </Link>
+            {props.userType === "Venture Capital" && (
+              <Link className="navbar-item" href="/app/swipe">
+                Swipe
+              </Link>
+            )}
+            {props.userType === "Pitcher" && (
+              <Link className="navbar-item" href="/app/pitches">
+                Pitch
+              </Link>
+            )}
+            {props.userType === "Venture Capital" && (
+              <Link className="navbar-item" href="/app/likes">
+                Likes
+              </Link>
+            )}
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

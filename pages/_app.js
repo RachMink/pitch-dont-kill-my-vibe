@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import Head from "next/head";
 import { Archivo } from "next/font/google";
 
-// If loading a variable font, you don't need to specify the font weight
 const inter = Archivo({ subsets: ["latin"] });
 
 export default function App({

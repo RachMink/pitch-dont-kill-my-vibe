@@ -51,26 +51,34 @@ export const dislikePitch = async (pitchId, dislikerName) => {
 };
 
 //TODO: Comment section
-// export const addComment = async (pitchId, comment) => {
-//   await updateDoc(doc(db, "pitches", pitchId), {
-//     comments: arrayUnion(comment),
-//   });
-// };
+export const addComment = async (pitchId, comment) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+    comments: arrayUnion(comment),
+  });
+};
 
-// export const deleteComment = async (pitchId, comment) => {
-//   await updateDoc(doc(db, "pitches", pitchId), {
-//     comments: arrayUnion(comment),
-//   });
-// };
 
-// export const getComment = async (pitchId, comment) => {
-//   await updateDoc(doc(db, "pitches", pitchId), {
-//     comments: arrayUnion(comment),
-//   });
-// };
+//skeleton code
+export const deleteComment = async (pitchId, commentID) => {
+ await updateDoc(doc(db, "pitches", pitchId), {
+   comments: arrayRemove(commentId),
+ }); 
+};
 
-// export const editComment = async (pitchId, comment) => {
-//   await updateDoc(doc(db, "pitches", pitchId), {
-//     comments: arrayUnion(comment),
-//   });
-// };
+export const getComments = async (pitchId) => {
+  const pitchDoc = await getDoc(doc(db, "pitches", pitchId));
+  if (pitchDoc.exists()) {
+    const pitchData = pitchDoc.data();
+    return pitchData.comments || [];
+  } else {
+    console.error("No such document exists");
+    return [];
+  }
+};
+
+export const editComment = async (pitchId, commentID, updatedComment) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+    comments: arrayUnion(updatedComment),
+  });
+  await deleteComment(pitchId, commentId);
+};

@@ -13,6 +13,7 @@ import {
 
 const db = getFirestore(firebaseApp);
 
+//Pitch section
 export const createPitch = async (pitch) => {
   const docRef = await addDoc(collection(db, "pitches"), pitch);
   //   console.log("Document written with ID: ", docRef.id);
@@ -49,8 +50,27 @@ export const dislikePitch = async (pitchId, dislikerName) => {
   });
 };
 
-export const addComment = async (pitchId, comment) => {
-  await updateDoc(doc(db, "pitches", pitchId), {
-    comments: arrayUnion(comment),
-  });
-};
+//TODO: Comment section
+// export const addComment = async (pitchId, comment) => {
+//   await updateDoc(doc(db, "pitches", pitchId), {
+//     comments: arrayUnion(comment),
+//   });
+// };
+
+// export const deleteComment = async (pitchId, comment) => {
+//   await updateDoc(doc(db, "pitches", pitchId), {
+//     comments: arrayUnion(comment),
+//   });
+// };
+
+// export const getComment = async (pitchId, comment) => {
+//   await updateDoc(doc(db, "pitches", pitchId), {
+//     comments: arrayUnion(comment),
+//   });
+// };
+
+// export const editComment = async (pitchId, comment) => {
+//   await updateDoc(doc(db, "pitches", pitchId), {
+//     comments: arrayUnion(comment),
+//   });
+// };

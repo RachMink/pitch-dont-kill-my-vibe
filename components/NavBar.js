@@ -48,6 +48,9 @@ export default function NavBar(props) {
                   {props.user ? (
                     <>
                       <span className="mr-2 mb-3">
+                        {/* TODO: displayName does not update right when signing up 
+                            TODO: handle sign in as previously signed up user
+                        */}
                         Welcome, {props.user.displayName}
                       </span>
                       <button

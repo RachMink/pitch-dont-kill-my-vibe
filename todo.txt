@@ -17,7 +17,7 @@ General:
 - clear form fields after submit on swipe page, add pitches page
 - Create logo
 - Update favicon
-- Improve styling
+- Improve styling (blue #24248b) and (yellow #f5c948)
 - remove next-auth from package.json (not used?)
 - Don't need to use API?
 

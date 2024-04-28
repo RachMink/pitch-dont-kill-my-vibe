@@ -5,16 +5,18 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { useState } from "react";
 import { handleSignup } from "../firebase"; // Importing the signup function
+import { useRouter } from "next/router";
+
 
 // Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/",
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
-};
+// const uiConfig = {
+//   // Popup signin flow rather than redirect flow.
+//   signInFlow: "popup",
+//   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+//   signInSuccessUrl: "/",
+//   // We will display Google and Facebook as auth providers.
+//   signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
+// };
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,12 +24,14 @@ export default function LoginPage() {
   const [displayName, setDisplayName] = useState("");
   const [userType, setUserType] = useState(""); // New state for user type
 
+  const router = useRouter();
+
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     try {
       // Call the handleSignup function passing email, password, and userType
       await handleSignup(email, password, displayName, userType);
-      // TODO: push user to "/" home page
+      router.push('/');
       console.log("User signed up successfully!");
     } catch (error) {
       console.error("Signup failed:", error);

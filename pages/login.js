@@ -1,52 +1,44 @@
-import firebaseApp from "./../firebase";
-import StyledFirebaseAuth from "./../components/StyledFirebaseAuth";
-// import { getAuth } from "firebase/auth";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
 import { useState } from "react";
-import { handleSignup } from "../firebase"; // Importing the signup function
+import { handleSignup} from "../firebase"; // Assuming you have a handleLogin function
 import { useRouter } from "next/router";
-
-
-// Configure FirebaseUI.
-// const uiConfig = {
-//   // Popup signin flow rather than redirect flow.
-//   signInFlow: "popup",
-//   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-//   signInSuccessUrl: "/",
-//   // We will display Google and Facebook as auth providers.
-//   signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
-// };
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [userType, setUserType] = useState(""); // New state for user type
-
+  const [userType, setUserType] = useState("");
+  const [existingUser, setExistingUser] = useState(false); // State to track if user exists
+  const [error, setError] = useState(""); // State to hold error message
   const router = useRouter();
 
-  const handleSignupSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the handleSignup function passing email, password, and userType
-      await handleSignup(email, password, displayName, userType);
-      router.push('/');
-      console.log("User signed up successfully!");
+      if (existingUser) {
+        // If existing user, handle login
+        await handleSignup(email, password);
+        router.push("/");
+        console.log("User logged in successfully!");
+      } else {
+        // If new user, handle signup
+        await handleSignup(email, password, displayName, userType);
+        router.push("/");
+        console.log("User signed up successfully!");
+      }
     } catch (error) {
-      console.error("Signup failed:", error);
+      setError(error.message); // Set error message
     }
   };
 
-  // return (
-  //   <div>
-  //     {/* <StyledFirebaseAuth
-  //       uiConfig={uiConfig}
-  //       firebaseAuth={getAuth(firebaseApp)}
-  //       uiCallback={() => console.log("Logged in!")}
-  //     /> */}
-  //   </div>
-  // );
+  const toggleForm = () => {
+    setExistingUser(!existingUser); // Toggle existingUser state
+    // Clear form fields when switching between signup and login
+    setEmail("");
+    setPassword("");
+    setDisplayName("");
+    setUserType("");
+    setError("");
+  };
 
   return (
     <div>
@@ -54,8 +46,13 @@ export default function LoginPage() {
         <div className="columns is-centered">
           <div className="column is-6">
             <div className="box">
-              <h1 className="title is-4 has-text-centered">Sign up</h1>
-              <form onSubmit={handleSignupSubmit}>
+              <h1 className="title is-4 has-text-centered">
+                {existingUser ? "Login" : "Sign up"}
+              </h1>
+              {error && ( // Render error notification if error state is not empty
+                <div className="notification is-danger is-light">{error}</div>
+              )}
+              <form onSubmit={handleFormSubmit}>
                 <div className="field">
                   <div className="control">
                     <input
@@ -80,41 +77,72 @@ export default function LoginPage() {
                     />
                   </div>
                 </div>
-                <div className="field">
-                  <div className="control">
-                    <input
-                      className="input is-medium"
-                      type="text"
-                      placeholder="First & Last Name"
-                      value={displayName}
-                      onChange={(e) => setDisplayName(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <div className="control">
-                    <div className="select is-medium is-fullwidth">
-                      <select
-                        value={userType}
-                        onChange={(e) => setUserType(e.target.value)}
-                        required
-                      >
-                        <option value="">Select User Type</option>
-                        <option value="Venture Capital">Venture Capital</option>
-                        <option value="Pitcher">Pitcher</option>
-                      </select>
+                {!existingUser && (
+                  <>
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          className="input is-medium"
+                          type="text"
+                          placeholder="First & Last Name"
+                          value={displayName}
+                          onChange={(e) => setDisplayName(e.target.value)}
+                          required
+                        />
+                      </div>
                     </div>
-                  </div>
-                </div>
+                    <div className="field">
+                      <div className="control">
+                        <div className="select is-medium is-fullwidth">
+                          <select
+                            value={userType}
+                            onChange={(e) => setUserType(e.target.value)}
+                            required
+                          >
+                            <option value="">Select User Type</option>
+                            <option value="Venture Capital">
+                              Venture Capital
+                            </option>
+                            <option value="Pitcher">Pitcher</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
                 <button
                   className="button is-block is-link is-fullwidth"
                   type="submit"
                 >
-                  Sign Up
+                  {existingUser ? "Login" : "Sign Up"}
                 </button>
               </form>
+
+              {existingUser ? (
+                <p className="has-text-centered mt-3">
+                  <span>{"Don't have an account? "}</span>{" "}
+                  <span
+                    className="is-underlined"
+                    style={{ cursor: "pointer" }}
+                    onClick={toggleForm}
+                  >
+                    Sign Up
+                  </span>
+                </p>
+              ) : (
+                <p className="has-text-centered mt-3">
+                  <span>
+                    {"Already have an account? "}{" "}
+                    <span
+                      className="is-underlined"
+                      style={{ cursor: "pointer" }}
+                      onClick={toggleForm}
+                    >
+                      Login
+                    </span>
+                  </span>{" "}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -122,3 +150,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

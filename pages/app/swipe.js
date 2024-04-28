@@ -29,6 +29,9 @@ export default function SwipePage(props) {
       commentBody: e.target["pitch-comment"].value,
       commentDate: Date.now(),
     });
+
+    // Clear the input field value
+    e.target["pitch-comment"].value = "";
   };
 
   return (

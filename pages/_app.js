@@ -5,6 +5,10 @@ import "@/styles/globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
+import { Archivo } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Archivo({ subsets: ["latin"] });
 
 export default function App({
   Component,
@@ -25,7 +29,10 @@ export default function App({
         <title>Pitch, don't kill my vibe.</title>
         <meta name="description" content="Pitch, don't kill my vibe homepage" />
       </Head>
-      <section className="hero is-fullheight has-background-info">
+      <section
+        className={`hero is-fullheight ${inter.className}`}
+        style={{ backgroundColor: "#24248b" }}
+      >
         <NavBar user={user} />
         <Component {...pageProps} user={user} />
         <Footer />

@@ -2,6 +2,10 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
+import { Mukta } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Mukta({ weight: "700", subsets: ["latin"] });
 
 export default function NavBar(props) {
     const router = useRouter();
@@ -18,7 +22,7 @@ export default function NavBar(props) {
 
 
   return (
-    <div className="hero-head has-background-info-light">
+    <div className="hero-head has-background-white">
       <nav
         className="navbar"
         role="navigation"
@@ -28,8 +32,15 @@ export default function NavBar(props) {
         <div className="navbar-menu">
           <div className="navbar-start">
             <div className="navbar-brand">
-              <Link className="navbar-item" href="/">
-                <strong>Pitch, don't kill my vibe.</strong>
+              <Link href="/" className="navbar-item">
+                <img
+                  src="pitch_logo.png" // Specify the path to your PNG logo
+                  alt="Logo"
+                />
+                <strong className={`is-size-5 ${inter.className}`}>
+                  {" "}
+                  &nbsp; Pitch, don't kill my vibe.
+                </strong>
               </Link>
             </div>
             <Link className="navbar-item" href="/app/swipe">

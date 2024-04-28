@@ -2,9 +2,11 @@
 import { initializeApp, getApps} from "firebase/app";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import {
-  getAuth, 
+  getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   updateProfile,
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -28,25 +30,34 @@ export const handleSignup = async (email, password, displayName, userType) => {
   const db = getFirestore(firebaseApp);
 
   try {
-    // Create user with email and password
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+    if (signInMethods && signInMethods.length > 0) {
+      // User already exists, log them in instead
+      await signInWithEmailAndPassword(auth, email, password);
+      return auth.currentUser;
+    }
+    else{
+      // Create user with email and password
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    // Update user's display name
-    await updateProfile(auth.currentUser, {
-      displayName: displayName,
-    });
+      // Update user's display name
+      await updateProfile(auth.currentUser, {
+        displayName: displayName,
+      });
 
-    // Store user data in Firestore
-    await setDoc(doc(db, "users", user.uid), {
-      userType: userType,
-      // You can add more user data here
-    });
+      // Store user data in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        userType: userType,
+        // You can add more user data here
+      });
 
-    return user;
+      return user;
+    }
+
   } catch (error) {
     throw error;
   }

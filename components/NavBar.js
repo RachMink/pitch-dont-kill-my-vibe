@@ -4,17 +4,18 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 
 export default function NavBar(props) {
-  // const session = useSession();
-  // const [user, setUser] = useState(null);
+    const router = useRouter();
 
-  // useEffect(() => {
-  //   const auth = getAuth();
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     setUser(user);
-  //   });
+    const handleSignOut = () => {
+      signOut( getAuth())
+        .then(() => {
+          router.push("/"); // Redirect to homepage
+        })
+        .catch((error) => {
+          console.error("Error signing out:", error);
+        });
+    };
 
-  //   return () => unsubscribe();
-  // }, []);
 
   return (
     <div className="hero-head has-background-info-light">
@@ -55,7 +56,7 @@ export default function NavBar(props) {
                       </span>
                       <button
                         className="button is-secondary mb-4"
-                        onClick={() => signOut(getAuth())}
+                        onClick={handleSignOut}
                       >
                         Sign out
                       </button>

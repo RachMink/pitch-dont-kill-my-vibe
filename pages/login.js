@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { handleSignup} from "../firebase"; // Assuming you have a handleLogin function
+import { handleSignup , handleLogin } from "../firebase";
 import { useRouter } from "next/router";
 
 export default function LoginPage() {
@@ -16,7 +16,7 @@ export default function LoginPage() {
     try {
       if (existingUser) {
         // If existing user, handle login
-        await handleSignup(email, password);
+        await handleLogin(email, password);
         router.push("/");
         console.log("User logged in successfully!");
       } else {

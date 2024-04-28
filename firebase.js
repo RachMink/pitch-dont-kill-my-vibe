@@ -25,18 +25,18 @@ if (!getApps().length) {
   firebaseApp = getApps()[0];
 }
 
+// Signup function
 export const handleSignup = async (email, password, displayName, userType) => {
+
   const auth = getAuth(firebaseApp);
   const db = getFirestore(firebaseApp);
 
   try {
     const signInMethods = await fetchSignInMethodsForEmail(auth, email);
     if (signInMethods && signInMethods.length > 0) {
-      // User already exists, log them in instead
-      await signInWithEmailAndPassword(auth, email, password);
-      return auth.currentUser;
-    }
-    else{
+      // User already exists, throw error
+      throw new Error("User already exists");
+    } else {
       // Create user with email and password
       const { user } = await createUserWithEmailAndPassword(
         auth,
@@ -52,12 +52,22 @@ export const handleSignup = async (email, password, displayName, userType) => {
       // Store user data in Firestore
       await setDoc(doc(db, "users", user.uid), {
         userType: userType,
-        // You can add more user data here
       });
 
       return user;
     }
+  } catch (error) {
+    throw error;
+  }
+};
 
+// Login function
+export const handleLogin = async (email, password) => {
+  const auth = getAuth(firebaseApp);
+  try {
+    // Sign in user with email and password
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    return user;
   } catch (error) {
     throw error;
   }

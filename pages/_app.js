@@ -14,8 +14,12 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   const [user, setUser] = useState(null);
+  const [userType, setUserType] = useState("");
 
   useEffect(() => {
+    if (userType === "") {
+      setUserType(localStorage.getItem("storedUserType"));
+    }
     // We track the auth state to reset firebaseUi if the user signs out.
     return onAuthStateChanged(getAuth(firebaseApp), (user) => {
       setUser(user);
@@ -32,8 +36,13 @@ export default function App({
         className={`hero is-fullheight ${inter.className}`}
         style={{ backgroundColor: "#24248b" }}
       >
-        <NavBar user={user} />
-        <Component {...pageProps} user={user} />
+        <NavBar user={user} userType={userType} setUserType={setUserType} />
+        <Component
+          {...pageProps}
+          user={user}
+          userType={userType}
+          setUserType={setUserType}
+        />
         <Footer />
       </section>
     </div>

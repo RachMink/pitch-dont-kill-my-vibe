@@ -10,12 +10,12 @@ export default function SwipePage(props) {
     const unreadPitches = allPitches.filter(
       (pitch) => !pitch.viewedBy.includes(props.user.email)
     );
-    console.log(unreadPitches);
+    // console.log(unreadPitches);
     setPitches(unreadPitches);
   };
 
   useEffect(() => {
-    getUnreadPitches();
+    props.userType === "Venture Capital" && getUnreadPitches();
   }, []);
 
   const onSubmit = async (e, pitchId) => {

@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps} from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import {
   getAuth,
@@ -18,7 +18,7 @@ const firebaseConfig = {
   appId: "1:1087785377973:web:0df79428e81862ca2b5efc",
 };
 
-let firebaseApp
+let firebaseApp;
 if (!getApps().length) {
   firebaseApp = initializeApp(firebaseConfig);
 } else {
@@ -27,7 +27,6 @@ if (!getApps().length) {
 
 // Signup function
 export const handleSignup = async (email, password, displayName, userType) => {
-
   const auth = getAuth(firebaseApp);
   const db = getFirestore(firebaseApp);
 

@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import { Archivo } from "next/font/google";
+import * as db from "../database";
 
 const inter = Archivo({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function App({
 }) {
   const [user, setUser] = useState(null);
   const [userType, setUserType] = useState("");
+  // console.log("user type", userType);
 
   useEffect(() => {
     if (userType === "") {
@@ -23,8 +25,16 @@ export default function App({
     // We track the auth state to reset firebaseUi if the user signs out.
     return onAuthStateChanged(getAuth(firebaseApp), (user) => {
       setUser(user);
+      if (user) {
+        getUserRole(user.uid);
+      }
     });
   }, []);
+
+  const getUserRole = async (userId) => {
+    const userRole = await db.getUserRole(userId);
+    setUserType(userRole.userType);
+  };
 
   return (
     <div>

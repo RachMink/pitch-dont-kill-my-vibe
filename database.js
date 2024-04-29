@@ -50,6 +50,11 @@ export const dislikePitch = async (pitchId, dislikerName) => {
   });
 };
 
+export const getUserRole = async (userId) => {
+  const userRole = await getDoc(doc(db, "users", userId));
+  return userRole.data();
+};
+
 //TODO: Comment section
 export const addComment = async (pitchId, comment) => {
   await updateDoc(doc(db, "pitches", pitchId), {
@@ -57,12 +62,11 @@ export const addComment = async (pitchId, comment) => {
   });
 };
 
-
 //skeleton code
 export const deleteComment = async (pitchId, commentID) => {
- await updateDoc(doc(db, "pitches", pitchId), {
-   comments: arrayRemove(commentId),
- }); 
+  await updateDoc(doc(db, "pitches", pitchId), {
+    comments: arrayRemove(commentId),
+  });
 };
 
 export const getComments = async (pitchId) => {

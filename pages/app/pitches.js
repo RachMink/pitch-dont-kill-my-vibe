@@ -48,7 +48,12 @@ export default function PitchPage(props) {
           </p>
           {pitches.length > 0 ? (
             pitches.map((pitch, index) => (
-              <PitchCard pitch={pitch} getPitches={getPitches} key={index} />
+              <PitchCard
+                pitch={pitch}
+                getPitches={getPitches}
+                userType={props.userType}
+                key={index}
+              />
             ))
           ) : (
             <p className="mt-6 subtitle has-text-white">

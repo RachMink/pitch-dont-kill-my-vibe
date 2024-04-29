@@ -41,11 +41,20 @@ export default function PitchSpecificPage(props) {
       <div className="title has-text-white has-text-centered mt-6">
         Viewing <i>{currentPitch.pitchTitle}</i>
       </div>
-      <div className="has-text-centered">
-        <Link href="/app/pitches">
-          <button className="button">View All Pitches</button>
-        </Link>
-      </div>
+      {props.userType === "Pitcher" && (
+        <div className="has-text-centered">
+          <Link href="/app/pitches">
+            <button className="button">View All Pitches</button>
+          </Link>
+        </div>
+      )}
+      {props.userType === "Venture Capital" && (
+        <div className="has-text-centered">
+          <Link href="/app/likes">
+            <button className="button">Back To Your Likes</button>
+          </Link>
+        </div>
+      )}
 
       <div className="columns m-5">
         <div className="column has-text-centered is-three-fifths">

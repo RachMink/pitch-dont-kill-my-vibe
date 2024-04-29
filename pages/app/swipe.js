@@ -49,7 +49,10 @@ export default function SwipePage(props) {
               user={props.user.email}
               getUnreadPitches={getUnreadPitches}
             />
-            <div className="columns m-0 mt-4">
+            <div className="subtitle has-text-white has-text-centered mt-4 mb-2">
+              You can leave feedback before you swipe.
+            </div>
+            <div className="columns m-0">
               <form
                 onSubmit={(e) => onSubmit(e, pitches[0].id)}
                 style={{ display: "contents" }}

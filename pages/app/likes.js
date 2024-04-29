@@ -29,7 +29,7 @@ export default function LikesPage(props) {
         My Likes
       </div>
       <div className="subtitle has-text-white has-text-centered">
-        Pitches you've reacted to.
+        Click on pitch to add, edit, delete, or view comments.
       </div>
       <div className="columns mt-4 ml-4 mr-4 mb-6">
         <div className="column has-text-centered mt-2 ml-5 mr-5 mb-6">

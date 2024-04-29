@@ -52,7 +52,8 @@ export default function PitchPage(props) {
         My Pitches
       </div>
       <div className="subtitle has-text-white has-text-centered">
-        Create new pitches or view old ones.
+        Add, edit, or delete pitches. Click on pitch to add, edit, delete, or
+        view comments.
       </div>
       <div className="columns m-5">
         <div className="column has-text-centered is-three-fifths">

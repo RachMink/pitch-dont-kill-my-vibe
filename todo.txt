@@ -17,8 +17,8 @@ General:
 ✅- Update favicon
 ✅- Improve styling (blue #24248b) and (yellow #f5c948)
 ✅- clear form fields after submit on swipe page, add pitches page
+✅- Add note on pitch tab and likes tab that you can click to view comments
 🟡- Create logo
-❌- Add note on pitch tab and likes tab that you can click to view comments
 ❌- remove next-auth from package.json (not used?)
 ❌- Don't need to use API?
 ❌- Remove console log statements/comments

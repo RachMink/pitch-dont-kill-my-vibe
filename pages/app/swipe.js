@@ -10,7 +10,6 @@ export default function SwipePage(props) {
     const unreadPitches = allPitches.filter(
       (pitch) => !pitch.viewedBy.includes(props.user.email)
     );
-    // console.log(unreadPitches);
     setPitches(unreadPitches);
   };
 

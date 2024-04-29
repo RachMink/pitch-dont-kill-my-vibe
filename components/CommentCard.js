@@ -47,9 +47,9 @@ export default function CommentCard({
           <button
             className="button is-warning mr-2"
             onClick={async (event) => {
-              //   await db.deleteComment(pitch.id);
-              //   await getPitches();
-              console.log(event);
+              // TODO: implement editing
+              // await db.editComment(pitch.id);
+              await getCurrentPitch();
             }}
           >
             <span class="icon">

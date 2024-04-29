@@ -33,6 +33,7 @@ VC Todo:
 🟡- Header says "Pitch betta have my money"?
 ❌- Be able to edit comments from pitch specific page
 ❌- Need to add unique id to track comments object
+❌- Address issue with crash on refresh when email becomes undefined (likes tab)
 
 Founder Todo:
 ✅- Only sees pitches tab
@@ -43,6 +44,7 @@ Founder Todo:
 🟡- Header says "Pitch don't kill my vibe"?
 🟡- Remove add comment section from pitcher view?
 ❌- Add edit pitch functionality from pitches tab
+❌- Address issue with crash on refresh when email becomes undefined (pitch tab, pitch specific tab)
 
 Signed out user Todo:
 ✅- Don't see any tabs

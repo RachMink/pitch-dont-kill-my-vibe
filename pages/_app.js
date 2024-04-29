@@ -16,7 +16,6 @@ export default function App({
 }) {
   const [user, setUser] = useState(null);
   const [userType, setUserType] = useState("");
-  // console.log("user type", userType);
 
   useEffect(() => {
     if (userType === "") {

@@ -7,8 +7,8 @@ export default function PitchPage(props) {
 
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
-    // console.log("email", props.user.email);
-    // TODO: this crashes the pitches page on refresh
+
+    // TODO: this crashes the pitches page on refresh since email becomes undefined
     const pitchesExcludingCurrentUser = allPitches.filter(
       (pitch) => pitch.pitchCreatorEmail === props.user.email
     );

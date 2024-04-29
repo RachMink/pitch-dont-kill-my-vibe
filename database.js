@@ -17,19 +17,15 @@ const db = getFirestore(firebaseApp);
 //Pitch section
 export const createPitch = async (pitch) => {
   const docRef = await addDoc(collection(db, "pitches"), pitch);
-  //   console.log("Document written with ID: ", docRef.id);
 };
 
 export const getSpecificPitch = async (pitchId) => {
   const pitch = await getDoc(doc(db, "pitches", pitchId));
-  // console.log(pitch.data());
 
   return {
     id: pitch.id,
     ...pitch.data(),
   };
-  //  pitch.data();
-  //   console.log("Document written with ID: ", docRef.id);
 };
 
 export const getAllPitches = async () => {

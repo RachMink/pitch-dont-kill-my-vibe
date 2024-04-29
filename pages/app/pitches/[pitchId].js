@@ -9,15 +9,18 @@ export default function PitchSpecificPage(props) {
   const [currentPitch, setCurrentPitch] = useState({});
 
   const getCurrentPitch = async () => {
-    console.log(router.query.pitchId);
+    // console.log(router.query.pitchId);
     const current = await db.getSpecificPitch(router.query.pitchId);
-    console.log(current);
+    // console.log(current);
     setCurrentPitch(current);
+    // console.log(current);
   };
 
   useEffect(() => {
     getCurrentPitch();
   }, []);
+
+  //   console.log(currentPitch);
 
   return (
     <div>
@@ -52,7 +55,7 @@ export default function PitchSpecificPage(props) {
             <input
               className="input is-medium control mt-2"
               type="text"
-              placeholder="Comment"
+              placeholder="Enter comment..."
               name="pitch-comment"
             />
             <div className="pt-2"></div>
@@ -60,6 +63,22 @@ export default function PitchSpecificPage(props) {
               <button className="button is-primary">Comment</button>
             </div>
           </form>
+          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+            View comments
+          </p>
+          {currentPitch.comments && currentPitch.comments.length > 0 ? (
+            currentPitch.comments.map((comment) => (
+              <div className="mb-5">
+                <p>
+                  {JSON.stringify(comment.commenterName)} said{" "}
+                  {JSON.stringify(comment.commentBody)}
+                </p>
+                <p></p>
+              </div>
+            ))
+          ) : (
+            <p>There are no comments to display.</p>
+          )}
         </div>
       </div>
     </div>

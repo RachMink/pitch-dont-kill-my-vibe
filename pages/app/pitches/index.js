@@ -1,5 +1,5 @@
 import PitchCard from "@/components/PitchCard";
-import * as db from "../../database";
+import * as db from "../../../database";
 import { useState, useEffect } from "react";
 
 export default function PitchPage(props) {

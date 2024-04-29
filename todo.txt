@@ -38,7 +38,8 @@ Founder Todo:
 ✅- Sort pitches by highest score?
 - Header says "Pitch don't kill my vibe"?
 ✅- Home page 'Start Here' button navigates you to pitches tab
-- Be able to view comments from pitch specific page
+✅- Be able to view comments from pitch specific page
+- Remove add comment section from pitcher view?
 
 Signed out user Todo:
 ✅- Don't see any tabs

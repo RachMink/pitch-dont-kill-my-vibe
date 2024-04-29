@@ -10,18 +10,13 @@ export default function PitchSpecificPage(props) {
   const [currentPitch, setCurrentPitch] = useState({});
 
   const getCurrentPitch = async () => {
-    // console.log(router.query.pitchId);
     const current = await db.getSpecificPitch(router.query.pitchId);
-    // console.log(current);
     setCurrentPitch(current);
-    // console.log(current);
   };
 
   useEffect(() => {
     getCurrentPitch();
   }, []);
-
-  //   console.log(currentPitch);
 
   return (
     <div>
@@ -44,8 +39,8 @@ export default function PitchSpecificPage(props) {
             viewOnly={true}
             userType={props.userType}
           ></PitchCard>
-          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
-            View comments
+          <p className="is-size-4 has-text-white has-text-weight-semibold mt-4 pb-2">
+            View Comments
           </p>
           {currentPitch.comments && currentPitch.comments.length > 0 ? (
             currentPitch.comments.map((comment) => (
@@ -60,13 +55,10 @@ export default function PitchSpecificPage(props) {
             Add a comment
           </p>
           <form onSubmit={(e) => console.log(e)}>
-            {/* <div className="is-size-5 pt-2">
-              Enter a name for your idea (optional)
-            </div> */}
             <input
               className="input is-medium control mt-2"
               type="text"
-              placeholder="Enter comment..."
+              placeholder="Enter comment"
               name="pitch-comment"
             />
             <div className="pt-2"></div>

@@ -29,8 +29,9 @@ VC Todo:
 ✅- Home page 'Start Here' button navigates you to swipe tab
 ✅- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
 ✅- Be able to add comment from pitch specific page
+✅- Only see edit or delete button if your own pitch
 🟡- Header says "Pitch betta have my money"?
-❌- Be able to edit/delete comments from pitch specific page
+❌- Be able to edit comments from pitch specific page
 ❌- Need to add unique id to track comments object
 
 Founder Todo:
@@ -38,6 +39,7 @@ Founder Todo:
 ✅- Sort pitches by highest score?
 ✅- Home page 'Start Here' button navigates you to pitches tab
 ✅- Be able to view comments from pitch specific page
+✅- Only see edit or delete button if your own pitch
 🟡- Header says "Pitch don't kill my vibe"?
 🟡- Remove add comment section from pitcher view?
 ❌- Add edit pitch functionality from pitches tab

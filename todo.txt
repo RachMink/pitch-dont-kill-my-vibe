@@ -14,33 +14,33 @@ TODO:
 
 General:
 ✅- Add pitch specific view page
-- Add note on pitch tab and likes tab that you can click to view comments
-- clear form fields after submit on swipe page, add pitches page
-- Create logo
 ✅- Update favicon
-- Improve styling (blue #24248b) and (yellow #f5c948)
-- remove next-auth from package.json (not used?)
-- Don't need to use API?
-- Remove console log statements/comments
+✅- Improve styling (blue #24248b) and (yellow #f5c948)
+🟡- Create logo
+❌- Add note on pitch tab and likes tab that you can click to view comments
+❌- clear form fields after submit on swipe page, add pitches page
+❌- remove next-auth from package.json (not used?)
+❌- Don't need to use API?
+❌- Remove console log statements/comments
 
 VC Todo:
 ✅- Only see swipe tab, likes tab
 ✅- Filter out pitches you created in swipe tab
-- Header says "Pitch betta have my money"?
 ✅- Home page 'Start Here' button navigates you to swipe tab
 ✅- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
 ✅- Be able to add comment from pitch specific page
-- Be able to edit/delete comments from pitch specific page
-    - Need to add unique id to track comments object
+🟡- Header says "Pitch betta have my money"?
+❌- Be able to edit/delete comments from pitch specific page
+❌- Need to add unique id to track comments object
 
 Founder Todo:
 ✅- Only sees pitches tab
-- Add edit pitch functionality from pitches tab
 ✅- Sort pitches by highest score?
-- Header says "Pitch don't kill my vibe"?
 ✅- Home page 'Start Here' button navigates you to pitches tab
 ✅- Be able to view comments from pitch specific page
-- Remove add comment section from pitcher view?
+🟡- Header says "Pitch don't kill my vibe"?
+🟡- Remove add comment section from pitcher view?
+❌- Add edit pitch functionality from pitches tab
 
 Signed out user Todo:
 ✅- Don't see any tabs

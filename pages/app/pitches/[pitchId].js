@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import PitchCard from "@/components/PitchCard";
+import CommentCard from "@/components/CommentCard";
 import * as db from "../../../database";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -24,7 +25,7 @@ export default function PitchSpecificPage(props) {
 
   return (
     <div>
-      <div className="title has-text-white has-text-centered">
+      <div className="title has-text-white has-text-centered mt-6">
         Viewing <i>{currentPitch.pitchTitle}</i>
       </div>
       <div className="has-text-centered">
@@ -43,6 +44,16 @@ export default function PitchSpecificPage(props) {
             viewOnly={true}
             userType={props.userType}
           ></PitchCard>
+          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+            View comments
+          </p>
+          {currentPitch.comments && currentPitch.comments.length > 0 ? (
+            currentPitch.comments.map((comment) => (
+              <CommentCard comment={comment} userType={props.userType} />
+            ))
+          ) : (
+            <p>There are no comments to display.</p>
+          )}
         </div>
         <div className="column has-text-centered">
           <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
@@ -63,22 +74,6 @@ export default function PitchSpecificPage(props) {
               <button className="button is-primary">Comment</button>
             </div>
           </form>
-          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
-            View comments
-          </p>
-          {currentPitch.comments && currentPitch.comments.length > 0 ? (
-            currentPitch.comments.map((comment) => (
-              <div className="mb-5">
-                <p>
-                  {JSON.stringify(comment.commenterName)} said{" "}
-                  {JSON.stringify(comment.commentBody)}
-                </p>
-                <p></p>
-              </div>
-            ))
-          ) : (
-            <p>There are no comments to display.</p>
-          )}
         </div>
       </div>
     </div>

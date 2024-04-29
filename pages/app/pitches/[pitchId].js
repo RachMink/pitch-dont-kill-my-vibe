@@ -73,6 +73,7 @@ export default function PitchSpecificPage(props) {
             currentPitch.comments.map((comment) => (
               <CommentCard
                 comment={comment}
+                user={props.user}
                 userType={props.userType}
                 pitchId={router.query.pitchId}
                 getCurrentPitch={getCurrentPitch}

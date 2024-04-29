@@ -26,6 +26,7 @@ export default function LoginPage({ userType, setUserType }) {
         // this is to prevent nav bar from changing before signed in
         setUserType(userTypeSelection);
         localStorage.setItem("storedUserType", userTypeSelection);
+        localStorage.setItem("storeUserEmail", email);
         router.push("/");
         console.log("User signed up successfully!");
       }

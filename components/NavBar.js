@@ -16,6 +16,7 @@ export default function NavBar(props) {
         router.push("/"); // Redirect to homepage
         props.setUserType("");
         localStorage.setItem("storedUserType", "");
+        localStorage.setItem("storeUserEmail", "");
       })
       .catch((error) => {
         console.error("Error signing out:", error);

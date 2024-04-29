@@ -2,6 +2,7 @@ import * as db from "../database";
 
 export default function CommentCard({
   comment,
+  user,
   userType,
   pitchId,
   getCurrentPitch,
@@ -24,6 +25,9 @@ export default function CommentCard({
     return formattedToday;
   };
 
+  const currentEmail = user
+    ? user.email
+    : localStorage.getItem("storeUserEmail");
   return (
     <div className="box columns m-2 is-vcentered p-5">
       <div
@@ -38,7 +42,7 @@ export default function CommentCard({
         </div>
       </div>
 
-      {userType === "Pitcher" && (
+      {comment.commenterEmail === currentEmail && (
         <div className="column has-text-right">
           <button
             className="button is-warning mr-2"

@@ -31,8 +31,8 @@ export default function LikesPage(props) {
       <div className="subtitle has-text-white has-text-centered">
         Pitches you've reacted to.
       </div>
-      <div className="columns mt-4 ml-6 mr-6 mb-6">
-        <div className="column has-text-centered mt-2 ml-6 mr-6 mb-6">
+      <div className="columns mt-4 ml-4 mr-4 mb-6">
+        <div className="column has-text-centered mt-2 ml-5 mr-5 mb-6">
           <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
             Liked Pitches
           </p>
@@ -46,7 +46,7 @@ export default function LikesPage(props) {
             </p>
           )}
         </div>
-        <div className="column has-text-centered mt-2 ml-6 mr-6 mb-6">
+        <div className="column has-text-centered mt-2 ml-5 mr-5 mb-6">
           <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
             Disliked Pitches
           </p>

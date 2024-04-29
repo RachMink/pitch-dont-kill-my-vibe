@@ -30,7 +30,6 @@ export default function PitchPage(props) {
     e.preventDefault();
 
     await db.createPitch({
-      // pitchId: Math.floor(Math.random() * 100000000), // TODO: store id with pitch?
       pitchCreatorEmail: props.user.email,
       pitchCreatorName: props.user.displayName,
       pitchTitle: e.target["pitch-title"].value,
@@ -43,6 +42,8 @@ export default function PitchPage(props) {
     });
 
     await getPitches();
+    e.target["pitch-title"].value = "";
+    e.target["pitch-description"].value = "";
   };
 
   return (

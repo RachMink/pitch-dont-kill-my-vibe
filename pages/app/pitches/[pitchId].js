@@ -31,7 +31,7 @@ export default function PitchSpecificPage(props) {
       commentDate: Date.now(),
     });
 
-    getCurrentPitch();
+    await getCurrentPitch();
     // Clear the input field value
     e.target["pitch-comment"].value = "";
   };

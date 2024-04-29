@@ -1,6 +1,11 @@
 import * as db from "../database";
 
-export default function CommentCard({ comment, userType }) {
+export default function CommentCard({
+  comment,
+  userType,
+  pitchId,
+  getCurrentPitch,
+}) {
   const formatDate = (now) => {
     const current = new Date(now);
     const yyyy = current.getFullYear();
@@ -50,9 +55,8 @@ export default function CommentCard({ comment, userType }) {
           <button
             className="button is-danger"
             onClick={async (event) => {
-              //   await db.deleteComment(pitch.id);
-              //   await getPitches();
-              console.log(event);
+              await db.deleteComment(pitchId, comment);
+              await getCurrentPitch();
             }}
           >
             <span class="icon">

@@ -24,7 +24,6 @@ export default function PitchSpecificPage(props) {
     e.preventDefault();
 
     await db.addComment(pitchId, {
-      // TODO: add unique id for deleting?
       commentId: Math.floor(Math.random() * 100000000),
       commenterEmail: props.user.email,
       commenterName: props.user.displayName,
@@ -63,7 +62,12 @@ export default function PitchSpecificPage(props) {
           </p>
           {currentPitch.comments && currentPitch.comments.length > 0 ? (
             currentPitch.comments.map((comment) => (
-              <CommentCard comment={comment} userType={props.userType} />
+              <CommentCard
+                comment={comment}
+                userType={props.userType}
+                pitchId={router.query.pitchId}
+                getCurrentPitch={getCurrentPitch}
+              />
             ))
           ) : (
             <p>There are no comments to display.</p>

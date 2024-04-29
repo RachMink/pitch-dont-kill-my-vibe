@@ -9,6 +9,7 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 
 const db = getFirestore(firebaseApp);
@@ -75,9 +76,9 @@ export const addComment = async (pitchId, comment) => {
 };
 
 //skeleton code
-export const deleteComment = async (pitchId, commentId) => {
+export const deleteComment = async (pitchId, comment) => {
   await updateDoc(doc(db, "pitches", pitchId), {
-    comments: arrayRemove(commentId),
+    comments: arrayRemove(comment),
   });
 };
 

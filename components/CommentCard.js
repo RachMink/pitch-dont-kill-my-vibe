@@ -36,13 +36,28 @@ export default function CommentCard({ comment, userType }) {
       {userType === "Pitcher" && (
         <div className="column has-text-right">
           <button
-            className="button is-danger"
+            className="button is-warning mr-2"
             onClick={async (event) => {
-              await db.deleteComment(pitch.id);
-              await getPitches();
+              //   await db.deleteComment(pitch.id);
+              //   await getPitches();
+              console.log(event);
             }}
           >
-            x
+            <span class="icon">
+              <i class="fas fa-edit"></i>
+            </span>
+          </button>
+          <button
+            className="button is-danger"
+            onClick={async (event) => {
+              //   await db.deleteComment(pitch.id);
+              //   await getPitches();
+              console.log(event);
+            }}
+          >
+            <span class="icon">
+              <i class="fas fa-trash"></i>
+            </span>
           </button>
         </div>
       )}

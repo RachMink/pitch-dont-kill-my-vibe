@@ -8,6 +8,10 @@ export default function Document() {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
         />
+        <link
+          rel="stylesheet"
+          href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
+        />
       </Head>
       <body>
         <Main />

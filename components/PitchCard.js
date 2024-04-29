@@ -27,7 +27,7 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
         <div className="column is-1 is-size-3">{pitchScore}</div>
       )}
       <div
-        className={`column ${userType === "Pitcher" && "is-four-fifths"} has-text-left`}
+        className={`column ${userType === "Pitcher" && "is-three-quarters"} has-text-left`}
       >
         <Link href={`/app/pitches/${pitch.id}`}>
           <div className="has-text-weight-bold is-size-4">
@@ -44,13 +44,26 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
       {userType === "Pitcher" && !viewOnly && (
         <div className="column has-text-right">
           <button
+            className="button is-warning mr-2"
+            onClick={async (event) => {
+              //   await db.deleteComment(pitch.id);
+              await getPitches();
+            }}
+          >
+            <span class="icon">
+              <i class="fas fa-edit"></i>
+            </span>
+          </button>
+          <button
             className="button is-danger"
             onClick={async (event) => {
               await db.deletePitch(pitch.id);
               await getPitches();
             }}
           >
-            x
+            <span class="icon">
+              <i class="fas fa-trash"></i>
+            </span>
           </button>
         </div>
       )}

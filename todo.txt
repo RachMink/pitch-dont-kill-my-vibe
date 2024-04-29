@@ -34,7 +34,7 @@ VC Todo:
 Founder Todo:
 ✅- Only sees pitches tab
 - Add edit pitch functionality from pitches tab
-- Sort pitches by highest score?
+✅- Sort pitches by highest score?
 - Header says "Pitch don't kill my vibe"?
 ✅- Home page 'Start Here' button navigates you to pitches tab
 - Be able to view comments from pitch specific page

@@ -11,7 +11,14 @@ export default function PitchPage(props) {
     const pitchesExcludingCurrentUser = allPitches.filter(
       (pitch) => pitch.pitchCreatorEmail === props.user.email
     );
-    setPitches(pitchesExcludingCurrentUser);
+    const pitchesSortedByHighest = pitchesExcludingCurrentUser.sort(
+      (a, b) =>
+        b.likes.length -
+        b.dislikes.length -
+        (a.likes.length - a.dislikes.length)
+    );
+
+    setPitches(pitchesSortedByHighest);
   };
 
   useEffect(() => {

@@ -65,7 +65,7 @@ export default function SwipePage(props) {
             </div>
           </div>
         ) : (
-          <p>Loading pitches</p>
+          <p>There are no pitches to display.</p>
         )}
       </div>
     </div>

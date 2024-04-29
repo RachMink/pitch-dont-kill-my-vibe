@@ -23,10 +23,10 @@ General:
 
 VC Todo:
 ✅- Only see swipe tab, likes tab
-- Filter out pitches you created in swipe tab
+✅- Filter out pitches you created in swipe tab
 - Header says "Pitch betta have my money"?
 ✅- Home page 'Start Here' button navigates you to swipe tab
-- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
+✅- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
 - Be able to add comment from pitch specific page
 - Be able to edit/delete comments from pitch specific page
     - Need to add unique id to track comments object

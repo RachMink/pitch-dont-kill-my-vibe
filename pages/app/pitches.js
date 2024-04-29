@@ -7,7 +7,11 @@ export default function PitchPage(props) {
 
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
-    setPitches(allPitches);
+    // console.log("email", props.user.email);
+    const pitchesExcludingCurrentUser = allPitches.filter(
+      (pitch) => pitch.pitchCreatorEmail === props.user.email
+    );
+    setPitches(pitchesExcludingCurrentUser);
   };
 
   useEffect(() => {

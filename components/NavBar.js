@@ -35,7 +35,7 @@ export default function NavBar(props) {
             <div className="navbar-brand">
               <Link href="/" className="navbar-item">
                 <img
-                  src="pitch_logo.png" // Specify the path to your PNG logo
+                  src="/pitch_logo.png" // Specify the path to your PNG logo
                   alt="Logo"
                 />
                 <strong className={`is-size-5 ${inter.className}`}>

@@ -1,6 +1,7 @@
 import * as db from "../database";
+import Link from "next/link";
 
-export default function PitchCard({ pitch, getPitches, userType }) {
+export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
   const pitchScore = pitch.likes?.length - pitch.dislikes?.length;
 
   const formatDate = (now) => {
@@ -22,20 +23,25 @@ export default function PitchCard({ pitch, getPitches, userType }) {
   };
   return (
     <div className="box columns m-2 is-vcentered">
-      {userType === "Pitcher" && (
+      {userType === "Pitcher" && !viewOnly && (
         <div className="column is-1 is-size-3">{pitchScore}</div>
       )}
       <div
         className={`column ${userType === "Pitcher" && "is-four-fifths"} has-text-left`}
       >
-        <div className="has-text-weight-bold is-size-4">{pitch.pitchTitle}</div>
-        <div className="is-size-5">{pitch.pitchDescription}</div>
-        <div className="pt-2">
-          Pitched by <strong>{pitch.pitchCreatorName}</strong> on{" "}
-          {formatDate(pitch.pitchDate)}
-        </div>
+        <Link href={`/app/pitches/${pitch.id}`}>
+          <div className="has-text-weight-bold is-size-4">
+            {pitch.pitchTitle}
+          </div>
+          <div className="is-size-5">{pitch.pitchDescription}</div>
+          <div className="pt-2">
+            Pitched by <strong>{pitch.pitchCreatorName}</strong> on{" "}
+            {formatDate(pitch.pitchDate)}
+          </div>
+        </Link>
       </div>
-      {userType === "Pitcher" && (
+
+      {userType === "Pitcher" && !viewOnly && (
         <div className="column has-text-right">
           <button
             className="button is-danger"

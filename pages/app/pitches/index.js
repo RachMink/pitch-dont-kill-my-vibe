@@ -8,6 +8,7 @@ export default function PitchPage(props) {
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
     // console.log("email", props.user.email);
+    // TODO: this crashes the pitches page on refresh
     const pitchesExcludingCurrentUser = allPitches.filter(
       (pitch) => pitch.pitchCreatorEmail === props.user.email
     );
@@ -29,7 +30,7 @@ export default function PitchPage(props) {
     e.preventDefault();
 
     await db.createPitch({
-      // TODO: store id with pitch?
+      // pitchId: Math.floor(Math.random() * 100000000), // TODO: store id with pitch?
       pitchCreatorEmail: props.user.email,
       pitchCreatorName: props.user.displayName,
       pitchTitle: e.target["pitch-title"].value,

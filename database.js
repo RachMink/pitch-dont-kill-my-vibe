@@ -19,6 +19,18 @@ export const createPitch = async (pitch) => {
   //   console.log("Document written with ID: ", docRef.id);
 };
 
+export const getSpecificPitch = async (pitchId) => {
+  const pitch = await getDoc(doc(db, "pitches", pitchId));
+  // console.log(pitch.data());
+
+  return {
+    id: pitch.id,
+    ...pitch.data(),
+  };
+  //  pitch.data();
+  //   console.log("Document written with ID: ", docRef.id);
+};
+
 export const getAllPitches = async () => {
   const result = [];
   const querySnapshot = await getDocs(collection(db, "pitches"));
@@ -63,7 +75,7 @@ export const addComment = async (pitchId, comment) => {
 };
 
 //skeleton code
-export const deleteComment = async (pitchId, commentID) => {
+export const deleteComment = async (pitchId, commentId) => {
   await updateDoc(doc(db, "pitches", pitchId), {
     comments: arrayRemove(commentId),
   });
@@ -80,7 +92,7 @@ export const getComments = async (pitchId) => {
   }
 };
 
-export const editComment = async (pitchId, commentID, updatedComment) => {
+export const editComment = async (pitchId, commentId, updatedComment) => {
   await updateDoc(doc(db, "pitches", pitchId), {
     comments: arrayUnion(updatedComment),
   });

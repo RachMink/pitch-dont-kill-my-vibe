@@ -13,13 +13,14 @@ TODO:
     - Important note: You will not see your own pitches when swiping
 
 General:
-- Add pitch specific view page
+✅- Add pitch specific view page
 - clear form fields after submit on swipe page, add pitches page
 - Create logo
 ✅- Update favicon
 - Improve styling (blue #24248b) and (yellow #f5c948)
 - remove next-auth from package.json (not used?)
 - Don't need to use API?
+- Remove console log statements/comments
 
 VC Todo:
 ✅- Only see swipe tab, likes tab

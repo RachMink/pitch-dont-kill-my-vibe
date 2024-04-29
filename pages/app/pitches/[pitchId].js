@@ -11,12 +11,31 @@ export default function PitchSpecificPage(props) {
 
   const getCurrentPitch = async () => {
     const current = await db.getSpecificPitch(router.query.pitchId);
+
+    current.comments.sort((a, b) => b.commentDate - a.commentDate);
     setCurrentPitch(current);
   };
 
   useEffect(() => {
     getCurrentPitch();
   }, []);
+
+  const onSubmit = async (e, pitchId) => {
+    e.preventDefault();
+
+    await db.addComment(pitchId, {
+      // TODO: add unique id for deleting?
+      commentId: Math.floor(Math.random() * 100000000),
+      commenterEmail: props.user.email,
+      commenterName: props.user.displayName,
+      commentBody: e.target["pitch-comment"].value,
+      commentDate: Date.now(),
+    });
+
+    getCurrentPitch();
+    // Clear the input field value
+    e.target["pitch-comment"].value = "";
+  };
 
   return (
     <div>
@@ -51,12 +70,12 @@ export default function PitchSpecificPage(props) {
           )}
         </div>
         <div className="column has-text-centered">
-          <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
+          <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
             Add a comment
           </p>
-          <form onSubmit={(e) => console.log(e)}>
-            <input
-              className="input is-medium control mt-2"
+          <form onSubmit={(e) => onSubmit(e, currentPitch.id)}>
+            <textarea
+              className="textarea is-medium control mt-2"
               type="text"
               placeholder="Enter comment"
               name="pitch-comment"

@@ -14,6 +14,7 @@ TODO:
 
 General:
 ✅- Add pitch specific view page
+- Add note on pitch tab and likes tab that you can click to view comments
 - clear form fields after submit on swipe page, add pitches page
 - Create logo
 ✅- Update favicon
@@ -28,7 +29,7 @@ VC Todo:
 - Header says "Pitch betta have my money"?
 ✅- Home page 'Start Here' button navigates you to swipe tab
 ✅- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
-- Be able to add comment from pitch specific page
+✅- Be able to add comment from pitch specific page
 - Be able to edit/delete comments from pitch specific page
     - Need to add unique id to track comments object
 

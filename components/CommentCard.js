@@ -24,7 +24,9 @@ export default function CommentCard({ comment, userType }) {
       <div
         className={`column ${userType === "Pitcher" && "is-four-fifths"} has-text-left p-0`}
       >
-        <div className="is-size-5">{comment.commentBody}</div>
+        <div className="is-size-5">
+          <i>"{comment.commentBody}"</i>
+        </div>
         <div className="pt-2">
           Commented by <strong>{comment.commenterName}</strong> on{" "}
           {formatDate(comment.commentDate)}

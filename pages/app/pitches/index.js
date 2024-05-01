@@ -34,6 +34,7 @@ export default function PitchPage(props) {
       pitchCreatorName: props.user.displayName,
       pitchTitle: e.target["pitch-title"].value,
       pitchDescription: e.target["pitch-description"].value,
+      pitchColor: e.target["pitch-color"].value,
       pitchDate: Date.now(),
       likes: [],
       dislikes: [],
@@ -80,9 +81,6 @@ export default function PitchPage(props) {
             Pitch a new idea
           </p>
           <form onSubmit={onSubmit}>
-            {/* <div className="is-size-5 pt-2">
-              Enter a name for your idea (optional)
-            </div> */}
             <input
               className="input is-medium control mt-2"
               type="text"
@@ -90,13 +88,25 @@ export default function PitchPage(props) {
               name="pitch-title"
             />
             <div className="pt-2"></div>
-            {/* <div className="is-size-5 pt-2">Describe your idea in few lines</div> */}
             <textarea
               className="textarea is-medium control"
               type="text"
               placeholder="Description"
               name="pitch-description"
             />
+            <div className="field">
+              <label className="label has-text-white mt-2">
+                Choose Pitch Background Color:
+              </label>
+              <div className="control">
+                <input
+                  className="color is-medium control"
+                  type="color"
+                  name="pitch-color"
+                  style={{ width: "100px", height: "50px" }}
+                />
+              </div>
+            </div>
             <div className="has-text-centered pt-4 pb-4 control">
               <button className="button is-primary">Pitch Idea</button>
             </div>

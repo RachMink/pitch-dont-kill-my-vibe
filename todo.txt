@@ -45,7 +45,7 @@ Founder Todo:
 ✅- Be able to view comments from pitch specific page
 ✅- Only see edit or delete button if your own pitch
 🟡- Remove add comment section from pitcher view?
-❌- add background color picked to pitch form
+🟡- add background color picked to pitch form
 ✅- Add edit pitch functionality from pitches tab
 ❌- fix styling on edit pitch popup
 ❌- fix [pitchID] nans on first load

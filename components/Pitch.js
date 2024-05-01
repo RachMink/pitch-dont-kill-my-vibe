@@ -23,6 +23,7 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background: `${pitch.pitchColor}` || "white",
       }}
     >
       <div className="card-content">

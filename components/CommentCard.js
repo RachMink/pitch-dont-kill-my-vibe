@@ -40,7 +40,7 @@ export default function CommentCard({
   const handleSubmitEdit = async () => {
     await db.editComment(pitchId, comment.commentId, editedComment);
     setEditMode(false);
-    await db.getComments();
+    await getCurrentPitch();
   };
 
   const currentEmail = user

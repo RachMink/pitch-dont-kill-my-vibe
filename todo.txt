@@ -20,6 +20,7 @@ General:
 ✅- Add note on pitch tab and likes tab that you can click to view comments
 🟡- Create logo
 ❌- edit styling of pitch to be more like insta story post
+❌- Add description of app in scroll
 ❌- update Figma wireframes
 ❌- Deployment
 ❌- remove next-auth from package.json (not used?)
@@ -33,8 +34,8 @@ VC Todo:
 ✅- Shouldn't be able to see score and edit/delete button on pitch card on likes tab
 ✅- Be able to add comment from pitch specific page
 ✅- Only see edit or delete button if your own pitch
-❌- Be able to edit comments from pitch specific page
-❌- Need to add unique id to track comments object
+✅- Be able to edit comments from pitch specific page
+✅- Need to add unique id to track comments object
 ❌- Address issue with crash on refresh when email becomes undefined (likes tab)
 
 Founder Todo:
@@ -45,7 +46,7 @@ Founder Todo:
 ✅- Only see edit or delete button if your own pitch
 🟡- Remove add comment section from pitcher view?
 ❌- add background color picked to pitch form
-❌- Add edit pitch functionality from pitches tab
+✅- Add edit pitch functionality from pitches tab
 ❌- Address issue with crash on refresh when email becomes undefined (pitch tab, pitch specific tab)
 
 Signed out user Todo:

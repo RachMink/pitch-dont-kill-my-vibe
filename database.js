@@ -72,7 +72,6 @@ export const getUserRole = async (userId) => {
   return userRole.data();
 };
 
-//TODO: Comment section
 export const addComment = async (pitchId, comment) => {
   await updateDoc(doc(db, "pitches", pitchId), {
     comments: arrayUnion(comment),
@@ -91,7 +90,6 @@ export const getComments = async (pitchId) => {
     const pitchData = pitchDoc.data();
     return pitchData.comments || [];
   } else {
-    console.error("No such document exists");
     return [];
   }
 };

@@ -18,7 +18,6 @@ export default function LoginPage({ userType, setUserType }) {
         // If existing user, handle login
         await handleLogin(email, password);
         router.push("/");
-        console.log("User logged in successfully!");
       } else {
         // If new user, handle signup
         await handleSignup(email, password, displayName, userTypeSelection);
@@ -28,7 +27,6 @@ export default function LoginPage({ userType, setUserType }) {
         localStorage.setItem("storedUserType", userTypeSelection);
         localStorage.setItem("storeUserEmail", email);
         router.push("/");
-        console.log("User signed up successfully!");
       }
     } catch (error) {
       setError(error.message); // Set error message

@@ -21,7 +21,6 @@ export default function SwipePage(props) {
     e.preventDefault();
 
     await db.addComment(pitchId, {
-      // TODO: add unique id for deleting?
       commentId: Math.floor(Math.random() * 100000000),
       commenterEmail: props.user.email,
       commenterName: props.user.displayName,

@@ -110,6 +110,7 @@ export default function PitchSpecificPage(props) {
                     userType={props.userType}
                     pitchId={router.query.pitchId}
                     getCurrentPitch={getCurrentPitch}
+                    key={comment.commentId}
                   />
                 ))
               ) : (

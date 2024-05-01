@@ -5,21 +5,29 @@ import * as db from "../../database";
 export default function LikesPage(props) {
   const [likedPitches, setLikedPitches] = useState([]);
   const [dislikedPitches, setDislikedPitches] = useState([]);
+  let currentEmail;
 
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
 
     const onlyLikedPitches = allPitches.filter((pitch) =>
-      pitch.likes.includes(props.user.email)
+      pitch.likes.includes(currentEmail)
     );
     const onlyDislikedPitches = allPitches.filter((pitch) =>
-      pitch.dislikes.includes(props.user.email)
+      pitch.dislikes.includes(currentEmail)
     );
     setLikedPitches(onlyLikedPitches);
     setDislikedPitches(onlyDislikedPitches);
   };
 
   useEffect(() => {
+    if (props.user?.email) {
+      localStorage.setItem("storedUserEmail", props.user.email);
+      currentEmail = props.user.email;
+    }
+    if (props.user?.email === undefined) {
+      currentEmail = localStorage.getItem("storedUserEmail");
+    }
     getPitches();
   }, []);
 

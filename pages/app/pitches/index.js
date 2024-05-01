@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 
 export default function PitchPage(props) {
   const [pitches, setPitches] = useState([]);
+  let currentEmail;
 
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
 
     // TODO: this crashes the pitches page on refresh since email becomes undefined
     const pitchesExcludingCurrentUser = allPitches.filter(
-      (pitch) => pitch.pitchCreatorEmail === props.user.email
+      (pitch) => pitch.pitchCreatorEmail === currentEmail
     );
     const pitchesSortedByHighest = pitchesExcludingCurrentUser.sort(
       (a, b) =>
@@ -23,6 +24,12 @@ export default function PitchPage(props) {
   };
 
   useEffect(() => {
+    if (props.user?.email) {
+      localStorage.setItem("storedUserEmail", props.user.email);
+      currentEmail = props.user.email;
+    } else if (props.user?.email === undefined) {
+      currentEmail = localStorage.getItem("storedUserEmail");
+    }
     getPitches();
   }, []);
 

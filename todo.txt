@@ -18,9 +18,9 @@ General:
 ✅- Improve styling (blue #24248b) and (yellow #f5c948)
 ✅- clear form fields after submit on swipe page, add pitches page
 ✅- Add note on pitch tab and likes tab that you can click to view comments
-🟡- Create logo
+✅- Create logo
 ❌- edit styling of pitch to be more like insta story post
-❌- add loading spinner
+✅- add loading spinner
 ❌- Add description of app in scroll
 ❌- update Figma wireframes
 ❌- Deployment
@@ -48,8 +48,8 @@ Founder Todo:
 ✅- Remove add comment section from pitcher view?
 ✅- add background color picker to pitch form
 ✅- Add edit pitch functionality from pitches tab
-❌- fix styling on edit pitch popup
-❌- fix [pitchID] nans on first load
+✅- fix styling on edit pitch popup
+✅- fix [pitchID] nans on first load
 ✅- Address issue with crash on refresh when email becomes undefined (pitch tab, pitch specific tab)
 
 Signed out user Todo:

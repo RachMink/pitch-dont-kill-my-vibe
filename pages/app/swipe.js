@@ -4,17 +4,27 @@ import * as db from "../../database";
 
 export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
+  let currentEmail;
 
   const getUnreadPitches = async () => {
     const allPitches = await db.getAllPitches();
+    currentEmail = currentEmail
+      ? currentEmail
+      : localStorage.getItem("storedUserEmail");
     const unreadPitches = allPitches.filter(
-      (pitch) => !pitch.viewedBy.includes(props.user.email)
+      (pitch) => !pitch.viewedBy.includes(currentEmail)
     );
     setPitches(unreadPitches);
   };
 
   useEffect(() => {
-    props.userType === "Venture Capital" && getUnreadPitches();
+    if (props.user?.email) {
+      localStorage.setItem("storedUserEmail", props.user.email);
+      currentEmail = props.user.email;
+    } else if (props.user?.email === undefined) {
+      currentEmail = localStorage.getItem("storedUserEmail");
+    }
+    getUnreadPitches();
   }, []);
 
   const onSubmit = async (e, pitchId) => {

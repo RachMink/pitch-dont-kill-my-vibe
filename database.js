@@ -41,11 +41,11 @@ export const getAllPitches = async () => {
   return result;
 };
 
-export const editPitch = async (pitchId, newData ) => {
+export const editPitch = async (pitchId, newData) => {
   await updateDoc(doc(db, "pitches", pitchId), {
-     pitchDescription: newData.pitchDescription,
-     pitchTitle: newData.pitchTitle,
-   });
+    pitchDescription: newData.pitchDescription,
+    pitchTitle: newData.pitchTitle,
+  });
   return { success: true, message: "Pitch updated successfully" };
 };
 
@@ -95,24 +95,24 @@ export const getComments = async (pitchId) => {
 };
 
 export const editComment = async (pitchId, comment, newData) => {
-   // Get the current comments of the pitch
-   const pitchComments = await getComments(pitchId);
+  // Get the current comments of the pitch
+  const pitchComments = await getComments(pitchId);
 
-   // Find the index of the comment to edit
-   const commentIndex = pitchComments.findIndex(
-     (commentindb) => commentindb.commentId === comment
-   );
+  // Find the index of the comment to edit
+  const commentIndex = pitchComments.findIndex(
+    (commentindb) => commentindb.commentId === comment
+  );
 
-   // Check if the comment with the specified ID exists
-   if (commentIndex !== -1) {
-     // Update the comment body with the new data
-     pitchComments[commentIndex].commentBody = newData.commentBody;
+  // Check if the comment with the specified ID exists
+  if (commentIndex !== -1) {
+    // Update the comment body with the new data
+    pitchComments[commentIndex].commentBody = newData.commentBody;
 
-     // Update the comment in the database
-     await updateDoc(doc(db, "pitches", pitchId), {
-       comments: pitchComments,
-     });
+    // Update the comment in the database
+    await updateDoc(doc(db, "pitches", pitchId), {
+      comments: pitchComments,
+    });
 
-     return { success: true, message: "Comment updated successfully" };
-   }
-}; 
+    return { success: true, message: "Comment updated successfully" };
+  }
+};

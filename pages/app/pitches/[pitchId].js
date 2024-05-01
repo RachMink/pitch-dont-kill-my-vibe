@@ -8,15 +8,26 @@ import Link from "next/link";
 export default function PitchSpecificPage(props) {
   const router = useRouter();
   const [currentPitch, setCurrentPitch] = useState({});
+  let currentPitchId;
 
   const getCurrentPitch = async () => {
-    const current = await db.getSpecificPitch(router.query.pitchId);
+    currentPitchId = currentPitchId
+      ? currentPitchId
+      : localStorage.getItem("storedPitchId");
+
+    const current = await db.getSpecificPitch(currentPitchId);
 
     current.comments.sort((a, b) => b.commentDate - a.commentDate);
     setCurrentPitch(current);
   };
 
   useEffect(() => {
+    if (router.query.pitchId) {
+      localStorage.setItem("storedPitchId", router.query.pitchId);
+      currentPitchId = router.query.pitchId;
+    } else if (router.query.pitchId === undefined) {
+      currentPitchId = localStorage.getItem("storedPitchId");
+    }
     getCurrentPitch();
   }, []);
 

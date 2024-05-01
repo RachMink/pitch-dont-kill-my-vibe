@@ -41,6 +41,14 @@ export const getAllPitches = async () => {
   return result;
 };
 
+export const editPitch = async (pitchId, newData ) => {
+  await updateDoc(doc(db, "pitches", pitchId), {
+     pitchDescription: newData.pitchDescription,
+     pitchTitle: newData.pitchTitle,
+   });
+  return { success: true, message: "Pitch updated successfully" };
+};
+
 export const deletePitch = async (pitchId) => {
   await deleteDoc(doc(db, "pitches", pitchId));
 };

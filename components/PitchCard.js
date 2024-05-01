@@ -1,7 +1,10 @@
 import * as db from "../database";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
+  const [editMode, setEditMode] = useState(false);
+  const [editedPitch, setEditedPitch] = useState({});
   const pitchScore = pitch.likes?.length - pitch.dislikes?.length;
 
   const formatDate = (now) => {
@@ -21,6 +24,21 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
       mm + "/" + dd + "/" + yyyy + ", " + hr + ":" + min + " " + suffix;
     return formattedToday;
   };
+
+  const handleEdit = () => {
+    setEditedPitch({
+      pitchTitle: pitch.pitchTitle,
+      pitchDescription: pitch.pitchDescription,
+    });
+    setEditMode(true);
+  };
+
+  const handleSubmitEdit = async () => {
+    await db.editPitch(pitch.id, editedPitch);
+    setEditMode(false);
+    await getPitches();
+  };
+
   return (
     <div className="box columns m-2 is-vcentered">
       {userType === "Pitcher" && !viewOnly && (
@@ -29,31 +47,61 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
       <div
         className={`column ${userType === "Pitcher" && "is-three-quarters"} has-text-left`}
       >
-        <Link href={`/app/pitches/${pitch.id}`}>
-          <div className="has-text-weight-bold is-size-4">
-            {pitch.pitchTitle}
-          </div>
-          <div className="is-size-5">{pitch.pitchDescription}</div>
-          <div className="pt-2">
-            Pitched by <strong>{pitch.pitchCreatorName}</strong> on{" "}
-            {formatDate(pitch.pitchDate)}
-          </div>
-        </Link>
+        {editMode ? (
+          <>
+            <input
+              className="input"
+              type="text"
+              value={editedPitch.pitchTitle}
+              onChange={(e) =>
+                setEditedPitch({ ...editedPitch, pitchTitle: e.target.value })
+              }
+            />
+            <textarea
+              className="textarea"
+              rows="1"
+              value={editedPitch.pitchDescription}
+              onChange={(e) =>
+                setEditedPitch({
+                  ...editedPitch,
+                  pitchDescription: e.target.value,
+                })
+              }
+            />
+          </>
+        ) : (
+          <Link href={`/app/pitches/${pitch.id}`}>
+            <div className="has-text-weight-bold is-size-4">
+              {pitch.pitchTitle}
+            </div>
+            <div className="is-size-5">{pitch.pitchDescription}</div>
+            <div className="pt-2">
+              Pitched by <strong>{pitch.pitchCreatorName}</strong> on{" "}
+              {formatDate(pitch.pitchDate)}
+            </div>
+          </Link>
+        )}
       </div>
 
       {userType === "Pitcher" && !viewOnly && (
         <div className="column has-text-right">
-          <button
-            className="button is-warning mr-2"
-            onClick={async (event) => {
-              //   await db.deleteComment(pitch.id);
-              await getPitches();
-            }}
-          >
-            <span class="icon">
-              <i class="fas fa-edit"></i>
-            </span>
-          </button>
+          {editMode ? (
+            <button
+              className="button is-success mr-2"
+              onClick={handleSubmitEdit}
+            >
+              <span className="icon">
+                <i className="fas fa-check"></i>
+              </span>
+            </button>
+          ) : (
+            <button className="button is-warning mr-2" onClick={handleEdit}>
+              <span className="icon">
+                <i className="fas fa-edit"></i>
+              </span>
+            </button>
+          )}
+
           <button
             className="button is-danger"
             onClick={async (event) => {
@@ -61,8 +109,8 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
               await getPitches();
             }}
           >
-            <span class="icon">
-              <i class="fas fa-trash"></i>
+            <span className="icon">
+              <i className="fas fa-trash"></i>
             </span>
           </button>
         </div>

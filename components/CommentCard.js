@@ -52,8 +52,8 @@ export default function CommentCard({
               await getCurrentPitch();
             }}
           >
-            <span class="icon">
-              <i class="fas fa-edit"></i>
+            <span className="icon">
+              <i className="fas fa-edit"></i>
             </span>
           </button>
           <button
@@ -63,8 +63,8 @@ export default function CommentCard({
               await getCurrentPitch();
             }}
           >
-            <span class="icon">
-              <i class="fas fa-trash"></i>
+            <span className="icon">
+              <i className="fas fa-trash"></i>
             </span>
           </button>
         </div>

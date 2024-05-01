@@ -10,6 +10,9 @@ export default function PitchPage(props) {
     const allPitches = await db.getAllPitches();
 
     // TODO: this crashes the pitches page on refresh since email becomes undefined
+    currentEmail = currentEmail
+      ? currentEmail
+      : localStorage.getItem("storedUserEmail");
     const pitchesExcludingCurrentUser = allPitches.filter(
       (pitch) => pitch.pitchCreatorEmail === currentEmail
     );

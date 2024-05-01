@@ -1,12 +1,15 @@
 import Pitch from "@/components/Pitch";
 import { useState, useEffect } from "react";
 import * as db from "../../database";
+import { Hourglass } from "react-loader-spinner";
 
 export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let currentEmail;
 
   const getUnreadPitches = async () => {
+    setIsLoading(true);
     const allPitches = await db.getAllPitches();
 
     currentEmail = currentEmail
@@ -18,6 +21,7 @@ export default function SwipePage(props) {
     );
 
     setPitches(unreadPitches);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -53,33 +57,47 @@ export default function SwipePage(props) {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {pitches.length > 0 ? (
-          <div className="has-text-centered">
-            <Pitch
-              pitch={pitches[0]}
-              user={props.user.email}
-              getUnreadPitches={getUnreadPitches}
-            />
-            <div className="subtitle has-text-white has-text-centered mt-4 mb-2">
-              You can leave feedback before you swipe.
-            </div>
-            <div className="columns m-0">
-              <form
-                onSubmit={(e) => onSubmit(e, pitches[0].id)}
-                style={{ display: "contents" }}
-              >
-                <input
-                  className="input is-four-fifths column"
-                  type="text"
-                  placeholder="Enter comment"
-                  name="pitch-comment"
-                />
-                <button className="button is-primary ml-1">Submit</button>
-              </form>
-            </div>
-          </div>
+        {isLoading ? (
+          <Hourglass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={["#ffffff", "#f5c984"]}
+          />
         ) : (
-          <p>There are no pitches to display.</p>
+          <>
+            {pitches.length > 0 ? (
+              <div className="has-text-centered">
+                <Pitch
+                  pitch={pitches[0]}
+                  user={props.user.email}
+                  getUnreadPitches={getUnreadPitches}
+                />
+                <div className="subtitle has-text-white has-text-centered mt-4 mb-2">
+                  You can leave feedback before you swipe.
+                </div>
+                <div className="columns m-0">
+                  <form
+                    onSubmit={(e) => onSubmit(e, pitches[0].id)}
+                    style={{ display: "contents" }}
+                  >
+                    <input
+                      className="input is-four-fifths column"
+                      type="text"
+                      placeholder="Enter comment"
+                      name="pitch-comment"
+                    />
+                    <button className="button is-primary ml-1">Submit</button>
+                  </form>
+                </div>
+              </div>
+            ) : (
+              <p>There are no pitches to display.</p>
+            )}
+          </>
         )}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import * as db from "../database";
+import { useState } from "react";
 
 export default function CommentCard({
   comment,
@@ -7,6 +8,10 @@ export default function CommentCard({
   pitchId,
   getCurrentPitch,
 }) {
+
+  const [editMode, setEditMode] = useState(false);
+  const [editedComment, setEditedComment ] = useState({});
+
   const formatDate = (now) => {
     const current = new Date(now);
     const yyyy = current.getFullYear();
@@ -25,6 +30,19 @@ export default function CommentCard({
     return formattedToday;
   };
 
+  const handleEdit = () => {
+    setEditedComment({
+      commentBody: comment.commentBody,
+    });
+    setEditMode(true);
+  };
+
+  const handleSubmitEdit = async () => {
+    await db.editComment(pitchId, comment.commentId, editedComment);
+    setEditMode(false);
+    await db.getComments();
+  };
+
   const currentEmail = user
     ? user.email
     : localStorage.getItem("storeUserEmail");
@@ -33,29 +51,54 @@ export default function CommentCard({
       <div
         className={`column ${userType === "Pitcher" && "is-four-fifths"} has-text-left p-0`}
       >
-        <div className="is-size-5">
-          <i>"{comment.commentBody}"</i>
-        </div>
-        <div className="pt-2">
-          Commented by <strong>{comment.commenterName}</strong> on{" "}
-          {formatDate(comment.commentDate)}
-        </div>
+        {editMode ? (
+          <>
+            <textarea
+              className="textarea"
+              rows="1"
+              value={editedComment.commentBody}
+              onChange={(e) =>
+                setEditedComment({
+                  ...editedComment,
+                  commentBody: e.target.value,
+                })
+              }
+            />
+          </>
+        ) : (
+          <>
+            <div className="is-size-5">
+              <i>"{comment.commentBody}"</i>
+            </div>
+            <div className="pt-2">
+              Commented by <strong>{comment.commenterName}</strong> on{" "}
+              {formatDate(comment.commentDate)}
+            </div>
+          </>
+        )}
       </div>
 
       {comment.commenterEmail === currentEmail && (
         <div className="column has-text-right">
+          {editMode ? (
+            <button
+              className="button is-success mr-2"
+              onClick={handleSubmitEdit}
+            >
+              <span className="icon">
+                <i className="fas fa-check"></i>
+              </span>
+            </button>
+          ) : (
           <button
             className="button is-warning mr-2"
-            onClick={async (event) => {
-              // TODO: implement editing
-              // await db.editComment(pitch.id);
-              await getCurrentPitch();
-            }}
+            onClick={handleEdit}
           >
             <span className="icon">
               <i className="fas fa-edit"></i>
             </span>
           </button>
+          )}
           <button
             className="button is-danger"
             onClick={async (event) => {

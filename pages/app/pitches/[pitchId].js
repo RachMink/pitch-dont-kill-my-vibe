@@ -57,7 +57,9 @@ export default function PitchSpecificPage(props) {
       )}
 
       <div className="columns m-5">
-        <div className="column has-text-centered is-three-fifths">
+        <div
+          className={`column has-text-centered ${props.userType === "Venture Capital" ? "is-three-fifths" : "is-full"}`}
+        >
           <p className="is-size-4 has-text-white has-text-weight-semibold	pb-2">
             Highlighted Pitch
           </p>
@@ -67,7 +69,7 @@ export default function PitchSpecificPage(props) {
             userType={props.userType}
           ></PitchCard>
           <p className="is-size-4 has-text-white has-text-weight-semibold mt-4 pb-2">
-            View Comments
+            Comments
           </p>
           {currentPitch.comments && currentPitch.comments.length > 0 ? (
             currentPitch.comments.map((comment) => (
@@ -83,23 +85,25 @@ export default function PitchSpecificPage(props) {
             <p>There are no comments to display.</p>
           )}
         </div>
-        <div className="column has-text-centered">
-          <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
-            Add a comment
-          </p>
-          <form onSubmit={(e) => onSubmit(e, currentPitch.id)}>
-            <textarea
-              className="textarea is-medium control mt-2"
-              type="text"
-              placeholder="Enter comment"
-              name="pitch-comment"
-            />
-            <div className="pt-2"></div>
-            <div className="has-text-centered pt-4 pb-4 control">
-              <button className="button is-primary">Comment</button>
-            </div>
-          </form>
-        </div>
+        {props.userType === "Venture Capital" && (
+          <div className="column has-text-centered">
+            <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
+              Add a comment
+            </p>
+            <form onSubmit={(e) => onSubmit(e, currentPitch.id)}>
+              <textarea
+                className="textarea is-medium control mt-2"
+                type="text"
+                placeholder="Enter comment"
+                name="pitch-comment"
+              />
+              <div className="pt-2"></div>
+              <div className="has-text-centered pt-4 pb-4 control">
+                <button className="button is-primary">Comment</button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

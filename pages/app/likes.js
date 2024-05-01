@@ -10,12 +10,18 @@ export default function LikesPage(props) {
   const getPitches = async () => {
     const allPitches = await db.getAllPitches();
 
+    currentEmail = currentEmail
+      ? currentEmail
+      : localStorage.getItem("storedUserEmail");
+
     const onlyLikedPitches = allPitches.filter((pitch) =>
       pitch.likes.includes(currentEmail)
     );
+
     const onlyDislikedPitches = allPitches.filter((pitch) =>
       pitch.dislikes.includes(currentEmail)
     );
+
     setLikedPitches(onlyLikedPitches);
     setDislikedPitches(onlyDislikedPitches);
   };
@@ -24,8 +30,7 @@ export default function LikesPage(props) {
     if (props.user?.email) {
       localStorage.setItem("storedUserEmail", props.user.email);
       currentEmail = props.user.email;
-    }
-    if (props.user?.email === undefined) {
+    } else if (props.user?.email === undefined) {
       currentEmail = localStorage.getItem("storedUserEmail");
     }
     getPitches();

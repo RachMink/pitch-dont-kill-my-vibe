@@ -8,12 +8,15 @@ export default function SwipePage(props) {
 
   const getUnreadPitches = async () => {
     const allPitches = await db.getAllPitches();
+
     currentEmail = currentEmail
       ? currentEmail
       : localStorage.getItem("storedUserEmail");
+
     const unreadPitches = allPitches.filter(
       (pitch) => !pitch.viewedBy.includes(currentEmail)
     );
+
     setPitches(unreadPitches);
   };
 

@@ -73,7 +73,7 @@ export default function SwipePage(props) {
               <div className="has-text-centered">
                 <Pitch
                   pitch={pitches[0]}
-                  user={props.user.email}
+                  user={currentEmail}
                   getUnreadPitches={getUnreadPitches}
                 />
                 <div className="subtitle has-text-white has-text-centered mt-4 mb-2">

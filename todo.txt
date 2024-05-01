@@ -47,6 +47,8 @@ Founder Todo:
 🟡- Remove add comment section from pitcher view?
 ❌- add background color picked to pitch form
 ✅- Add edit pitch functionality from pitches tab
+❌- fix styling on edit pitch popup
+❌- fix [pitchID] nans on first load
 ❌- Address issue with crash on refresh when email becomes undefined (pitch tab, pitch specific tab)
 
 Signed out user Todo:

@@ -25,7 +25,7 @@ General:
 ❌- Deployment
 ❌- remove next-auth from package.json (not used?)
 ❌- Don't need to use API?
-❌- Remove console log statements/comments
+❌- Remove console log statements/comments - before deployment
 
 VC Todo:
 ✅- Only see swipe tab, likes tab
@@ -44,8 +44,8 @@ Founder Todo:
 ✅- Home page 'Start Here' button navigates you to pitches tab
 ✅- Be able to view comments from pitch specific page
 ✅- Only see edit or delete button if your own pitch
-🟡- Remove add comment section from pitcher view?
-🟡- add background color picked to pitch form
+✅- Remove add comment section from pitcher view?
+✅- add background color picker to pitch form
 ✅- Add edit pitch functionality from pitches tab
 ❌- fix styling on edit pitch popup
 ❌- fix [pitchID] nans on first load

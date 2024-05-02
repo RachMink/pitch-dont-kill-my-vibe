@@ -43,9 +43,7 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
     <div
       className="box columns m-2 is-vcentered"
       style={{
-        // border: `8px solid ${pitch.pitchColor}` || "white",
-        background: `${pitch.pitchColor}` || "white",
-        color: `${pitch.pitchFontColor}` || "black",
+        borderBottom: `10px solid ${pitch.pitchColor}` || "",
       }}
     >
       {userType === "Pitcher" && !viewOnly && (

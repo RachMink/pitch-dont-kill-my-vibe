@@ -64,11 +64,11 @@ export default function Home(props) {
             onClick={() => {
               secondSectionRef.current.scrollIntoView({ behavior: "smooth" });
             }}
-            className="has-text-white mt-2"
+            className="has-text-white mt-2 is-clickable"
           >
             <span className="is-underlined">Read More</span>{" "}
-            <span class="icon is-small">
-              <i class="fas fa-arrow-right"></i>
+            <span className="icon is-small">
+              <i className="fas fa-arrow-down"></i>
             </span>
           </div>
         </div>

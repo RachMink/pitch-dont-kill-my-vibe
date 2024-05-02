@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Sparkles from 'react-sparkle';
+import Sparkles from "react-sparkle";
 import { Antonio } from "next/font/google";
 import { useRef } from "react";
 
@@ -65,8 +65,17 @@ export default function Home(props) {
               secondSectionRef.current.scrollIntoView({ behavior: "smooth" });
             }}
             className="has-text-white mt-2 is-clickable"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "fit-content",
+              margin: "auto",
+            }}
           >
-            <span className="is-underlined">Read More</span>{" "}
+            <span className="button is-ghost has-text-white pb-0">
+              Read More
+            </span>
             <span className="icon is-small">
               <i className="fas fa-arrow-down"></i>
             </span>

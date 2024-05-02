@@ -51,7 +51,7 @@ export default function SwipePage(props) {
 
   return (
     <div>
-      <div className="title has-text-white has-text-centered">Swipe</div>
+      <div className="title has-text-white has-text-centered mt-4">Swipe</div>
       <div className="subtitle has-text-white has-text-centered">
         Like, dislike, or comment on new ideas.
       </div>

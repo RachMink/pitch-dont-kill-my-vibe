@@ -27,8 +27,9 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
       }}
     >
       <div className="card-content">
-        <p className="title">“{pitch.pitchDescription}”</p>
-        <p className="subtitle mt-2">{pitch.pitchCreatorName}</p>
+        <p className="title is-5">{pitch.pitchTitle}</p>
+        <p className="title">{pitch.pitchDescription}</p>
+        <p className="subtitle is-6 mt-2">@{pitch.pitchCreatorName}</p>
       </div>
       <footer
         className="card-footer"

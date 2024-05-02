@@ -2,6 +2,10 @@ import PitchCard from "@/components/PitchCard";
 import { useState, useEffect } from "react";
 import * as db from "../../database";
 import { Hourglass } from "react-loader-spinner";
+import { Antonio } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const antonio = Antonio({ weight: "300", subsets: ["latin"] });
 
 export default function LikesPage(props) {
   const [likedPitches, setLikedPitches] = useState([]);
@@ -43,11 +47,13 @@ export default function LikesPage(props) {
   return (
     <div>
       <div>
-        <div className="title has-text-white has-text-centered mt-6">
+        <div
+          className={`title has-text-white has-text-centered mt-6 ${antonio.className}`}
+        >
           My Likes
         </div>
-        <div className="subtitle has-text-white has-text-centered">
-          Click on pitch to add, edit, delete, or view comments.
+        <div className="subtitle has-text-white has-text-centered mt-1">
+          Click on pitch to add ➕ , edit ✏️ , delete 🚫 , or view 👀 , comments.
         </div>
         {isLoading ? ( // Render Spinner if loading, else render content
           <div className="columns mt-4 ml-4 mr-4 mb-6">
@@ -73,7 +79,9 @@ export default function LikesPage(props) {
                 borderRadius: "10px",
               }}
             >
-              <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
+              <p
+                className={`is-size-4 has-text-white has-text-weight-semibold pb-2 ${antonio.className}`}
+              >
                 Liked Pitches <span> ❤️ </span>
               </p>
               {likedPitches.length > 0 ? (
@@ -98,7 +106,9 @@ export default function LikesPage(props) {
                 borderRadius: "10px",
               }}
             >
-              <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
+              <p
+                className={`is-size-4 has-text-white has-text-weight-semibold pb-2 ${antonio.className}`}
+              >
                 Disliked Pitches <span>👎</span>
               </p>
               {dislikedPitches.length > 0 ? (

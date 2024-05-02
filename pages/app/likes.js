@@ -53,7 +53,7 @@ export default function LikesPage(props) {
           My Likes
         </div>
         <div className="subtitle has-text-white has-text-centered mt-1">
-          Click on pitch to add ➕ , edit ✏️ , delete 🚫 , or view 👀 , comments.
+          Click on pitch to add ➕ , edit ✏️ , delete 🗑️ , or view 👀 , comments
         </div>
         {isLoading ? ( // Render Spinner if loading, else render content
           <div className="columns mt-4 ml-4 mr-4 mb-6">

@@ -175,7 +175,7 @@ export default function PitchPage(props) {
                     </label>
                     <div className="control">
                       <input
-                        defaultValue="#ffffff"
+                        defaultValue="#00000"
                         className="color is-medium control"
                         type="color"
                         name="pitch-font-color"

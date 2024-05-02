@@ -5,10 +5,10 @@ import "@/styles/globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
-import { Archivo } from "next/font/google";
+import { Anybody } from "next/font/google";
 import * as db from "../database";
 
-const inter = Archivo({ subsets: ["latin"] });
+const inter = Anybody({ weight: ["300","400","500"], subsets: ["latin"] });
 
 export default function App({
   Component,
@@ -43,7 +43,7 @@ export default function App({
       </Head>
       <section
         className={`hero is-fullheight ${inter.className}`}
-        style={{ backgroundColor: "#24248b" }}
+        style={{ backgroundColor: "#24248b", fontWeight: "300"}}
       >
         <NavBar user={user} userType={userType} setUserType={setUserType} />
         <Component

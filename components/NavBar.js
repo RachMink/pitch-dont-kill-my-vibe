@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Antonio } from "next/font/google";
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Antonio({ subsets: ["latin"] });
+const antonio = Antonio({ subsets: ["latin"] });
 
 export default function NavBar(props) {
   const router = useRouter();
@@ -36,7 +36,10 @@ export default function NavBar(props) {
                   src="/512-logo.png" // Specify the path to your PNG logo
                   alt="Logo"
                 />
-                <strong className={`is-size-5 ${inter.className}`} style={{letterSpacing: "-1px"}}>
+                <strong
+                  className={`is-size-5 ${antonio.className}`}
+                  style={{ letterSpacing: "-1px" }}
+                >
                   {" "}
                   &nbsp; Pitch, don't kill my vibe.
                 </strong>
@@ -68,18 +71,19 @@ export default function NavBar(props) {
                         Welcome, {props.user.displayName}
                       </span>
                       <button
-                        className="button is-secondary mb-4"
+                        className={`button is-secondary mb-4 ${antonio.className}`}
                         onClick={handleSignOut}
                       >
                         Sign out
                       </button>
                     </>
                   ) : (
-                    <Link
-                      className="navbar-item button is-secondary ml-3  mb-4"
-                      href="/login"
-                    >
-                      Sign In
+                    <Link href="/login">
+                      <button
+                        className={`button is-secondary ml-3 mb-4 ${antonio.className}`}
+                      >
+                        Sign In
+                      </button>
                     </Link>
                   )}
                 </div>

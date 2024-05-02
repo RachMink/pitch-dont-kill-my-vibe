@@ -59,7 +59,7 @@ export default function NavBar(props) {
                   {props.user ? (
                     <>
                       <span className="mr-2 mb-3">
-                        Welcome, {props.user.displayName}
+                        👋 Hey, {props.user.displayName}
                       </span>
                       <button
                         className={`button is-secondary mb-4 ${antonio.className}`}

@@ -22,20 +22,12 @@ export default function NavBar(props) {
 
   return (
     <div className="hero-head has-background-white">
-      <nav
-        className="navbar"
-        role="navigation"
-        aria-label="main navigation"
-        style={{ borderBottom: "1px solid lightgrey" }}
-      >
+      <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-menu">
           <div className="navbar-start">
-            <div className="navbar-brand">
+            <div className="navbar-brand navbar-item">
               <Link href="/" className="navbar-item">
-                <img
-                  src="/512-logo.png" // Specify the path to your PNG logo
-                  alt="Logo"
-                />
+                <img src="/512-logo.png" alt="Logo" />
                 <strong
                   className={`is-size-5 ${antonio.className}`}
                   style={{ letterSpacing: "-1px" }}
@@ -46,17 +38,17 @@ export default function NavBar(props) {
               </Link>
             </div>
             {props.userType === "Venture Capital" && (
-              <Link className="navbar-item" href="/app/swipe">
+              <Link className="navbar-item mt-2" href="/app/swipe">
                 Swipe
               </Link>
             )}
             {props.userType === "Pitcher" && (
-              <Link className="navbar-item" href="/app/pitches">
+              <Link className="navbar-item mt-2" href="/app/pitches">
                 Pitch
               </Link>
             )}
             {props.userType === "Venture Capital" && (
-              <Link className="navbar-item" href="/app/likes">
+              <Link className="navbar-item mt-2" href="/app/likes">
                 Likes
               </Link>
             )}

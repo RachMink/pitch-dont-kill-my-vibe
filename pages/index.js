@@ -34,7 +34,10 @@ export default function Home(props) {
     <>
       <div className="hero is-fullheight columns is-vcentered is-centered">
         <div className="has-text-centered">
-          <p className={`title has-text-white ${antonio.className}`}style={{ position: "relative" , letterSpacing: "-1px"}}>
+          <p
+            className={`title has-text-white ${antonio.className}`}
+            style={{ position: "relative", letterSpacing: "-1px" }}
+          >
             <span className="container">
               Welcome to Pitch, don't kill my vibe.
             </span>
@@ -55,34 +58,85 @@ export default function Home(props) {
           </Link>
         </div>
       </div>
-      <div className="section hero is-fullheight is-vcentered has-background-white">
-        <div className="columns is-centered">
-          <div className="column is-one-third">
-            <div className="card">
-              <div className="card-content">
-                <p className="title">Find Potential Investments</p>
-                <p>Discover promising startups and investment opportunities.</p>
+      <div className="section hero is-fullheight has-background-white">
+        <div className="columns is-vcentered is-centered">
+          <div className="column container">
+            <div className="columns is-multiline is-centered is-fullheight">
+              <div className="column is-half">
+                <div className="card is-fullheight p-5 m-4">
+                  <div className="card-content has-text-centered">
+                    <div className="columns is-centered is-multiline m-4">
+                      <div className="column is-one-third">
+                        <img className="is-128x128" src="/192-heart.png" />
+                      </div>
+                      <div className="column is-one-third">
+                        <img className="is-128x128" src="/192-x.png" />
+                      </div>
+                    </div>
+                    <p className="title">
+                      If you're someone in{" "}
+                      <span style={{ color: "#f5c984" }}>Venture Capital</span>
+                      ...
+                    </p>
+                    <p className="subtitle p-2">Find Potential Investments</p>
+                    <p>
+                      With Pitch, dont kill my vibe, you can now discover
+                      innovative startup ideas and engage with founders. Like
+                      ideas that catch your interest and leave valuable
+                      feedback. You can also view previous pitches that you have
+                      liked and update any comments you see fit. Reach out to
+                      promising entrepreneurs early on and build connections.{" "}
+                    </p>
+                    <Link href="/login">
+                      <button
+                        className={`button mt-4 ${antonio.className}`}
+                        style={{ color: "#f5c984" }}
+                      >
+                        Pitch, betta have my money
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="card">
-              <div className="card-content">
-                <p className="title">Pitch Your Ideas</p>
-                <p>
-                  Showcase your innovative ideas and get feedback from
-                  investors.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="column is-one-third">
-            <div className="card">
-              <div className="card-content">
-                <p className="title">Network with Professionals</p>
-                <p>
-                  Connect with like-minded entrepreneurs and industry experts.
-                </p>
+              <div className="column is-half">
+                <div className="card is-fullheight p-5 m-4">
+                  <div className="card-content has-text-centered">
+                    <div className="columns is-centered is-multiline m-4">
+                      <div className="column is-one-third">
+                        <img className="is-128x128" src="/192-lightbulb.png" />
+                      </div>
+                      <div className="column is-one-third">
+                        <img className="is-128x128" src="/192-lightbulb.png" />
+                      </div>
+                      <div className="column is-one-third">
+                        <img className="is-128x128" src="/192-lightbulb.png" />
+                      </div>
+                    </div>
+                    <p className="title">
+                      If you're someone with{" "}
+                      <span style={{ color: "#f5c984" }}>good ideas</span>
+                      ...
+                    </p>
+                    <p className="subtitle p-2">Pitch your ideas to investors</p>
+                    <p>
+                      With Pitch, dont kill my vibe, you can pitch your
+                      innovative ideas and receive feedback from venture
+                      capitalists at low stakes. Seamlessly connect with
+                      potential investors and gauge interest in your startup
+                      based on likes and dislikes. Read detailed feedback from
+                      investors and use that to make informed decisions about
+                      your business direction.
+                    </p>
+                    <Link href="/login">
+                      <button
+                        className={`button is-secondary mt-4 ${antonio.className}`}
+                        style={{ color: "#f5c984" }}
+                      >
+                        Pitch, please
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

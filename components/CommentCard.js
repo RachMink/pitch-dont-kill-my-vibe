@@ -86,18 +86,16 @@ export default function CommentCard({
               onClick={handleSubmitEdit}
             >
               <span className="icon">
-                <i className="fas fa-check"></i>
+                ✅{/* <i className="fas fa-check"></i> */}
               </span>
             </button>
           ) : (
-          <button
-            className="button is-warning mr-2"
-            onClick={handleEdit}
-          >
-            <span className="icon">
-              <i className="fas fa-edit"></i>
-            </span>
-          </button>
+            <button className="button is-warning mr-2" onClick={handleEdit}>
+              <span className="icon">
+                ✏️
+                {/* <i className="fas fa-edit"></i> */}
+              </span>
+            </button>
           )}
           <button
             className="button is-danger"
@@ -107,7 +105,8 @@ export default function CommentCard({
             }}
           >
             <span className="icon">
-              <i className="fas fa-trash"></i>
+              🗑️
+              {/* <i className="fas fa-trash"></i> */}
             </span>
           </button>
         </div>

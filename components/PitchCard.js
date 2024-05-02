@@ -91,26 +91,26 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
               onClick={handleSubmitEdit}
             >
               <span className="icon">
-                <i className="fas fa-check"></i>
+                ✅
               </span>
             </button>
           ) : (
             <button className="button is-warning mr-2" onClick={handleEdit}>
               <span className="icon">
-                <i className="fas fa-edit"></i>
+                ✏️
               </span>
             </button>
           )}
 
           <button
-            className="button is-danger mr-2"
+            className="button is-danger"
             onClick={async (event) => {
               await db.deletePitch(pitch.id);
               await getPitches();
             }}
           >
             <span className="icon">
-              <i className="fas fa-trash"></i>
+              🗑️
             </span>
           </button>
         </div>

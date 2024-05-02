@@ -40,7 +40,14 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
   };
 
   return (
-    <div className="box columns m-2 is-vcentered">
+    <div
+      className="box columns m-2 is-vcentered"
+      style={{
+        // border: `8px solid ${pitch.pitchColor}` || "white",
+        background: `${pitch.pitchColor}` || "white",
+        color: `${pitch.pitchFontColor}` || "black",
+      }}
+    >
       {userType === "Pitcher" && !viewOnly && (
         <div className="column is-1 is-size-3">{pitchScore}</div>
       )}
@@ -90,15 +97,11 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
               className="button is-success mr-2"
               onClick={handleSubmitEdit}
             >
-              <span className="icon">
-                ✅
-              </span>
+              <span className="icon">✅</span>
             </button>
           ) : (
             <button className="button is-warning mr-2" onClick={handleEdit}>
-              <span className="icon">
-                ✏️
-              </span>
+              <span className="icon">✏️</span>
             </button>
           )}
 
@@ -109,9 +112,7 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
               await getPitches();
             }}
           >
-            <span className="icon">
-              🗑️
-            </span>
+            <span className="icon">🗑️</span>
           </button>
         </div>
       )}

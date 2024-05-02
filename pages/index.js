@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Sparkles from 'react-sparkle';
 import { Antonio } from "next/font/google";
+import { useRef } from "react";
 
 const antonio = Antonio({ subsets: ["latin"] });
 
 export default function Home(props) {
+  const secondSectionRef = useRef(null);
   const getRoute = (userType) => {
     switch (userType) {
       case "":
@@ -30,6 +32,7 @@ export default function Home(props) {
         return "Start Here";
     }
   };
+
   return (
     <>
       <div className="hero is-fullheight columns is-vcentered is-centered">
@@ -52,13 +55,28 @@ export default function Home(props) {
             A place for founders and investors to level ideas.
           </p>
           <Link href={getRoute(props.userType)}>
-            <button className="button">
+            <button className={`button is-secondary mb-4 ${antonio.className}`}>
               {renderButtonText(props.userType)}
             </button>
           </Link>
+
+          <div
+            onClick={() => {
+              secondSectionRef.current.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="has-text-white mt-2"
+          >
+            <span className="is-underlined">Read More</span>{" "}
+            <span class="icon is-small">
+              <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
         </div>
       </div>
-      <div className="section hero is-fullheight has-background-white">
+      <div
+        ref={secondSectionRef}
+        className="section hero is-fullheight has-background-white"
+      >
         <div className="columns is-vcentered is-centered">
           <div className="column container">
             <div className="columns is-multiline is-centered is-fullheight">
@@ -117,7 +135,9 @@ export default function Home(props) {
                       <span style={{ color: "#f5c984" }}>good ideas</span>
                       ...
                     </p>
-                    <p className="subtitle p-2">Pitch your ideas to investors</p>
+                    <p className="subtitle p-2">
+                      Pitch your ideas to investors
+                    </p>
                     <p>
                       With Pitch, dont kill my vibe, you can pitch your
                       innovative ideas and receive feedback from venture

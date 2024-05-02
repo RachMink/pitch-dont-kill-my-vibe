@@ -103,7 +103,7 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
           )}
 
           <button
-            className="button is-danger"
+            className="button is-danger mr-2"
             onClick={async (event) => {
               await db.deletePitch(pitch.id);
               await getPitches();

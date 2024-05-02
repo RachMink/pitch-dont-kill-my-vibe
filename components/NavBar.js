@@ -2,10 +2,10 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-import { Mukta } from "next/font/google";
+import { Antonio } from "next/font/google";
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Mukta({ weight: "700", subsets: ["latin"] });
+const inter = Antonio({ subsets: ["latin"] });
 
 export default function NavBar(props) {
   const router = useRouter();
@@ -33,10 +33,10 @@ export default function NavBar(props) {
             <div className="navbar-brand">
               <Link href="/" className="navbar-item">
                 <img
-                  src="/pitch_logo.png" // Specify the path to your PNG logo
+                  src="/512-logo.png" // Specify the path to your PNG logo
                   alt="Logo"
                 />
-                <strong className={`is-size-5 ${inter.className}`}>
+                <strong className={`is-size-5 ${inter.className}`} style={{letterSpacing: "-1px"}}>
                   {" "}
                   &nbsp; Pitch, don't kill my vibe.
                 </strong>

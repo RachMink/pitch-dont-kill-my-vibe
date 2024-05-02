@@ -100,10 +100,10 @@ export default function PitchSpecificPage(props) {
             >
               <div
                 style={{
-                  background: "rgba(251,226,91)",
+                  background: "rgba(255,255,255, 0.2)",
                   padding: "30px",
                   borderRadius: "10px",
-                  // border: "1px solid white",
+                  border: "3px solid rgba(251,226,91)",
                 }}
               >
                 <p

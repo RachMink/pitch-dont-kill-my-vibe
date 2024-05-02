@@ -65,9 +65,16 @@ export default function LikesPage(props) {
           </div>
         ) : (
           <div className="columns mt-4 ml-4 mr-4 mb-6">
-            <div className="column has-text-centered mt-2 ml-5 mr-5 mb-6">
+            <div
+              className="column has-text-centered mt-2 ml-5 mr-5 mb-6"
+              style={{
+                background: "rgba(255, 255, 255, 0.2)",
+                padding: "20px",
+                borderRadius: "10px",
+              }}
+            >
               <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
-                Liked Pitches
+                Liked Pitches <span> ❤️ </span>
               </p>
               {likedPitches.length > 0 ? (
                 likedPitches.map((pitch, index) => (
@@ -83,9 +90,16 @@ export default function LikesPage(props) {
                 </p>
               )}
             </div>
-            <div className="column has-text-centered mt-2 ml-5 mr-5 mb-6">
+            <div
+              className="column has-text-centered mt-2 ml-5 mr-5 mb-6"
+              style={{
+                background: "rgba(255, 255, 255, 0.2)",
+                padding: "20px",
+                borderRadius: "10px",
+              }}
+            >
               <p className="is-size-4 has-text-white has-text-weight-semibold pb-2">
-                Disliked Pitches
+                Disliked Pitches <span>👎</span>
               </p>
               {dislikedPitches.length > 0 ? (
                 dislikedPitches.map((pitch, index) => (

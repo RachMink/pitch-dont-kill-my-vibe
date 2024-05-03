@@ -9,6 +9,7 @@ import { Antonio, Anybody } from "next/font/google";
 
 // If loading a variable font, you don't need to specify the font weight
 const antonio = Antonio({ subsets: ["latin"] });
+const anybody = Anybody({ weight: "300", subsets: ["latin"] });
 
 export default function PitchSpecificPage(props) {
   const router = useRouter();
@@ -73,14 +74,18 @@ export default function PitchSpecificPage(props) {
         </div>
       ) : (
         <div>
-          <div className="title has-text-white has-text-centered mt-6">
-            <span className={`${antonio.className}`}> Title: </span>
-            <i>{currentPitch.pitchTitle}</i>
+          <div className="has-text-white has-text-centered mt-6 mb-2">
+            <span className={`title has-text-white ${antonio.className}`}>
+              {" "}
+              Title: <i>{currentPitch.pitchTitle}</i>
+            </span>
           </div>
           {props.userType === "Pitcher" && (
-            <div className="has-text-centered">
+            <div className={`has-text-centered `}>
               <Link href="/app/pitches">
-                <button className="button">View All Pitches</button>
+                <button className={`button mt-3 ${anybody.className}`}>
+                  View All Pitches
+                </button>
               </Link>
             </div>
           )}

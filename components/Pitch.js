@@ -47,7 +47,10 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
         color: `${pitch.pitchFontColor}` || "black",
       }}
     >
-      <div className={`card-content ${ibm_sans.className}`}>
+      <div
+        className={`card-content ${ibm_sans.className} `}
+        style={{ height: "55%"}}
+      >
         <p className="is-size-5">{pitch.pitchTitle}:</p>
         <p className={`is-size-2`}>{pitch.pitchDescription}</p>
         <p className="is-size-6 mt-2">@{pitch.pitchCreatorName}</p>

@@ -4,11 +4,15 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { Antonio } from "next/font/google";
 
-// If loading a variable font, you don't need to specify the font weight
 const antonio = Antonio({ subsets: ["latin"] });
 
 export default function NavBar(props) {
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const handleSignOut = () => {
     signOut(getAuth()).then(() => {
@@ -16,26 +20,36 @@ export default function NavBar(props) {
       props.setUserType("");
       localStorage.setItem("storedUserType", "");
       localStorage.setItem("storeUserEmail", "");
+      setIsMenuOpen(false); // Close menu after sign out
     });
   };
 
   return (
     <div className="hero-head has-background-white">
       <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-menu">
+        <div className="navbar-brand">
+          <Link href="/" className="navbar-item">
+            <img src="/512-logo.png" alt="Logo" />
+            <strong
+              className={`is-size-5 ${antonio.className}`}
+              style={{ letterSpacing: "-1px" }}
+            >
+              &nbsp; Pitch, don't kill my vibe.
+            </strong>
+          </Link>
+          <button
+            className={`navbar-burger ${isMenuOpen ? "is-active" : ""}`}
+            aria-label="menu"
+            aria-expanded={isMenuOpen ? "true" : "false"}
+            onClick={toggleMenu}
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div className={`navbar-menu ${isMenuOpen ? "is-active" : ""}`}>
           <div className="navbar-start">
-            <div className="navbar-brand navbar-item">
-              <Link href="/" className="navbar-item">
-                <img src="/512-logo.png" alt="Logo" />
-                <strong
-                  className={`is-size-5 ${antonio.className}`}
-                  style={{ letterSpacing: "-1px" }}
-                >
-                  {" "}
-                  &nbsp; Pitch, don't kill my vibe.
-                </strong>
-              </Link>
-            </div>
             {props.userType === "Venture Capital" && (
               <Link className="navbar-item pb-1" href="/app/swipe">
                 Swipe
@@ -55,34 +69,33 @@ export default function NavBar(props) {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <div className="buttons">
-                  {props.user ? (
-                    <>
-                      <span className="mr-2 mb-3">
-                        👋 Hey, {props.user.displayName}
-                      </span>
-                      <button
-                        className={`button is-secondary mb-4 ${antonio.className}`}
-                        onClick={handleSignOut}
-                      >
-                        Sign out
-                      </button>
-                    </>
-                  ) : (
-                    <Link href="/login">
-                      <button
-                        className={`button is-secondary ml-3 mb-4 ${antonio.className}`}
-                      >
-                        Sign In
-                      </button>
-                    </Link>
-                  )}
-                </div>
+                {props.user ? (
+                  <>
+                    <span className="mr-2 mb-3">
+                      👋 Hey, {props.user.displayName}
+                    </span>
+                    <button
+                      className={`button is-secondary mb-4 ${antonio.className}`}
+                      onClick={handleSignOut}
+                    >
+                      Sign out
+                    </button>
+                  </>
+                ) : (
+                  <Link href="/login">
+                    <button
+                      className={`button is-secondary ml-3 mb-4 ${antonio.className}`}
+                    >
+                      Sign In
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
-          </div>{" "}
+          </div>
         </div>
-      </nav>{" "}
+      </nav>
     </div>
   );
 }
+

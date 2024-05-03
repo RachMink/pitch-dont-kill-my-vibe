@@ -47,7 +47,11 @@ export default function PitchCard({ pitch, getPitches, viewOnly, userType }) {
       }}
     >
       {userType === "Pitcher" && !viewOnly && (
-        <div className="column is-1 is-size-3">{pitchScore}</div>
+        <div
+          className={`column is-1 is-size-3 ${pitchScore < 0 ? "has-text-danger" : ""}`}
+        >
+          {pitchScore}
+        </div>
       )}
       <div
         className={`column ${userType === "Pitcher" && "is-three-quarters"} has-text-left`}

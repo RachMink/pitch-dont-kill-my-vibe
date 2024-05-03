@@ -104,8 +104,7 @@ export default function Home(props) {
                       If you're someone in{" "}<br/>
                       <span className="title" style={{ color: "#f5c984" }}>
                         Venture Capital
-                      </span>{" "}
-                      ...
+                      </span>...
                     </p>
 
                     <p className="subtitle p-2">Find Potential Investments</p>

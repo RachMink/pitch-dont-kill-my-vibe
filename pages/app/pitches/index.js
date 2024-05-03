@@ -10,6 +10,7 @@ const antonio = Antonio({ weight: ["300", "400"], subsets: ["latin"] });
 export default function PitchPage(props) {
   const [pitches, setPitches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [remainingChars, setRemainingChars] = useState(180);
   let currentEmail;
 
   const getPitches = async () => {
@@ -65,6 +66,14 @@ export default function PitchPage(props) {
     await getPitches();
     e.target["pitch-title"].value = "";
     e.target["pitch-description"].value = "";
+    setRemainingChars(180);
+  };
+
+  // Update remaining characters count as user types
+  const handleDescriptionChange = (e) => {
+    const inputLength = e.target.value.length;
+    const remaining = 180 - inputLength;
+    setRemainingChars(remaining);
   };
 
   return (
@@ -141,9 +150,14 @@ export default function PitchPage(props) {
                 <textarea
                   className="textarea is-medium control mt-4"
                   type="text"
-                  placeholder="Description"
+                  placeholder="Description (max 180 characters)"
+                  maxLength={180}
                   name="pitch-description"
+                  onChange={handleDescriptionChange}
                 />
+                <div className="has-text-right has-text-white">
+                  {remainingChars}/180
+                </div>
 
                 <div className="field mt-4">
                   <div className="is-flex is-align-items-center">

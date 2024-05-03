@@ -101,10 +101,13 @@ export default function Home(props) {
                       </div>
                     </div>
                     <p className="title">
-                      If you're someone in{" "}
-                      <span style={{ color: "#f5c984" }}>Venture Capital</span>
+                      If you're someone in{" "}<br/>
+                      <span className="title" style={{ color: "#f5c984" }}>
+                        Venture Capital
+                      </span>{" "}
                       ...
                     </p>
+
                     <p className="subtitle p-2">Find Potential Investments</p>
                     <p>
                       With Pitch, dont kill my vibe, you can now discover
@@ -114,16 +117,16 @@ export default function Home(props) {
                       liked and update any comments you see fit. Reach out to
                       promising entrepreneurs early on and build connections.{" "}
                     </p>
-                  {/* TODO: fix this conditional rendering - not working properly */}
-                  {props.userType === "" && (
-                    <Link href="/login">
-                      <button
-                        className={`button mt-4 ${antonio.className}`}
-                        style={{ color: "#f5c984" }}
-                      >
-                        Pitch, betta have my money
-                      </button>
-                    </Link>)}
+                    {props.userType === "" && (
+                      <Link href="/login">
+                        <button
+                          className={`button mt-4 ${antonio.className}`}
+                          style={{ color: "#f5c984" }}
+                        >
+                          Pitch, betta have my money
+                        </button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -142,7 +145,7 @@ export default function Home(props) {
                       </div>
                     </div>
                     <p className="title">
-                      If you're someone with{" "}
+                      If you're someone with <br />
                       <span style={{ color: "#f5c984" }}>good ideas</span>
                       ...
                     </p>
@@ -159,14 +162,15 @@ export default function Home(props) {
                       your business direction.
                     </p>
                     {props.userType === "" && (
-                    <Link href="/login">
-                      <button
-                        className={`button is-secondary mt-4 ${antonio.className}`}
-                        style={{ color: "#f5c984" }}
-                      >
-                        Pitch, please
-                      </button>
-                    </Link>)}
+                      <Link href="/login">
+                        <button
+                          className={`button is-secondary mt-4 ${antonio.className}`}
+                          style={{ color: "#f5c984" }}
+                        >
+                          Pitch, please
+                        </button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

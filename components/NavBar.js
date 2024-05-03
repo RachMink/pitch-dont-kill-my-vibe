@@ -37,17 +37,17 @@ export default function NavBar(props) {
               </Link>
             </div>
             {props.userType === "Venture Capital" && (
-              <Link className="navbar-item mt-1" href="/app/swipe">
+              <Link className="navbar-item pb-1" href="/app/swipe">
                 Swipe
               </Link>
             )}
             {props.userType === "Pitcher" && (
-              <Link className="navbar-item mt-1" href="/app/pitches">
+              <Link className="navbar-item pb-1" href="/app/pitches">
                 Pitch
               </Link>
             )}
             {props.userType === "Venture Capital" && (
-              <Link className="navbar-item mt-1" href="/app/likes">
+              <Link className="navbar-item pb-1" href="/app/likes">
                 Likes
               </Link>
             )}

@@ -114,6 +114,7 @@ export default function Home(props) {
                       liked and update any comments you see fit. Reach out to
                       promising entrepreneurs early on and build connections.{" "}
                     </p>
+                    {props.userType === "" && (
                     <Link href="/login">
                       <button
                         className={`button mt-4 ${antonio.className}`}
@@ -121,7 +122,7 @@ export default function Home(props) {
                       >
                         Pitch, betta have my money
                       </button>
-                    </Link>
+                    </Link>)}
                   </div>
                 </div>
               </div>
@@ -156,6 +157,7 @@ export default function Home(props) {
                       investors and use that to make informed decisions about
                       your business direction.
                     </p>
+                     {props.userType === "" && (
                     <Link href="/login">
                       <button
                         className={`button is-secondary mt-4 ${antonio.className}`}
@@ -163,7 +165,7 @@ export default function Home(props) {
                       >
                         Pitch, please
                       </button>
-                    </Link>
+                    </Link>)}
                   </div>
                 </div>
               </div>

@@ -21,12 +21,12 @@ General:
 ✅- Create logo
 ❌- edit styling of pitch to be more like insta story post
 ✅- add loading spinner
-❌- Add description of app in scroll
+✅- Add description of app in scroll
 ❌- update Figma wireframes
-❌- Deployment
-❌- remove next-auth from package.json (not used?)
-❌- Don't need to use API?
-❌- Remove console log statements/comments - before deployment
+✅- Deployment
+✅- remove next-auth from package.json (not used?)
+✅- Don't need to use API?
+✅- Remove console log statements/comments - before deployment
 
 VC Todo:
 ✅- Only see swipe tab, likes tab

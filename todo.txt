@@ -19,7 +19,7 @@ General:
 ✅- clear form fields after submit on swipe page, add pitches page
 ✅- Add note on pitch tab and likes tab that you can click to view comments
 ✅- Create logo
-❌- edit styling of pitch to be more like insta story post
+✅- edit styling of pitch to be more like insta story post
 ✅- add loading spinner
 ✅- Add description of app in scroll
 ❌- update Figma wireframes

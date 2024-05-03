@@ -66,7 +66,7 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
       >
         <button
           href="#"
-          className="button m-1 mr-2 card-footer-item is-large"
+          className="button m-1 mr-2 card-footer-item is-large is-light"
           disabled={isDislikeAnimating}
           style={{ boxShadow: "0px 0px 30px 2px #ffffff" }}
           onClick={() => {
@@ -79,7 +79,7 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
         </button>
         <button
           href="#"
-          className="button m-1 ml-2 card-footer-item is-large is-outlined"
+          className="button m-1 ml-2 card-footer-item is-large is-light"
           disabled={isLikeAnimating}
           style={{ boxShadow: "0px 0px 30px 2px #ffffff" }}
           onClick={() => {

@@ -71,11 +71,11 @@ export default function NavBar(props) {
               <div className="buttons">
                 {props.user ? (
                   <>
-                    <span className="mr-2 mb-3">
+                    <span className="mr-2">
                       👋 Hey, {props.user.displayName}
                     </span>
                     <button
-                      className={`button is-secondary mb-4 ${antonio.className}`}
+                      className={`button is-secondary ${antonio.className}`}
                       onClick={handleSignOut}
                     >
                       Sign out
@@ -84,7 +84,7 @@ export default function NavBar(props) {
                 ) : (
                   <Link href="/login">
                     <button
-                      className={`button is-secondary ml-3 mb-4 ${antonio.className}`}
+                      className={`button is-secondary ml-3 ${antonio.className}`}
                     >
                       Sign In
                     </button>

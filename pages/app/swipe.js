@@ -5,8 +5,8 @@ import { Hourglass } from "react-loader-spinner";
 import { Antonio, Anybody } from "next/font/google";
 
 // If loading a variable font, you don't need to specify the font weight
-const antonio = Antonio({ subsets: ["latin"] });
-const anybody = Anybody({ subsets: ["latin"] });
+const antonio = Antonio({  subsets: ["latin"] });
+const anybody = Anybody({ weight: "300", subsets: ["latin"] });
 
 export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
@@ -100,8 +100,8 @@ export default function SwipePage(props) {
                       name="pitch-comment"
                     />
                     <button
-                      className={`button ml-1 mb-3 ${anybody.className}`}
-                      style={{ color: "#f5c984", border: "2px solid #f5c984" }}
+                      className={`button ml-1 mb-3 is-hovered ${anybody.className}`}
+                      // style={{ color: "#f5c984", border: "2px solid #f5c984" }}
                     >
                       Submit
                     </button>

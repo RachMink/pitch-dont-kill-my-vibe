@@ -43,16 +43,13 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        fontFamily: `${pitch.pitchFont}` || `${ibm_sans.className}`,
         background: `${pitch.pitchColor}` || "white",
         color: `${pitch.pitchFontColor}` || "black",
       }}
     >
-      <div className="card-content">
+      <div className={`card-content ${ibm_sans.className}`}>
         <p className="is-size-5">{pitch.pitchTitle}:</p>
-        <p className={`is-size-2`}>
-          {pitch.pitchDescription}
-        </p>
+        <p className={`is-size-2`}>{pitch.pitchDescription}</p>
         <p className="is-size-6 mt-2">@{pitch.pitchCreatorName}</p>
       </div>
       <footer

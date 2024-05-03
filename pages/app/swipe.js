@@ -2,6 +2,11 @@ import Pitch from "@/components/Pitch";
 import { useState, useEffect } from "react";
 import * as db from "../../database";
 import { Hourglass } from "react-loader-spinner";
+import { Antonio, Anybody } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const antonio = Antonio({ subsets: ["latin"] });
+const anybody = Anybody({ subsets: ["latin"] });
 
 export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
@@ -51,7 +56,11 @@ export default function SwipePage(props) {
 
   return (
     <div>
-      <div className="title has-text-white has-text-centered mt-4">Swipe</div>
+      <div
+        className={`title has-text-white has-text-centered mt-4 ${antonio.className}`}
+      >
+        Swipe
+      </div>
       <div className="subtitle has-text-white has-text-centered">
         Like, dislike, or comment on new ideas.
       </div>
@@ -76,10 +85,10 @@ export default function SwipePage(props) {
                   user={props.user?.email}
                   getUnreadPitches={getUnreadPitches}
                 />
-                <div className="subtitle has-text-white has-text-centered mt-4 mb-2">
+                {/* <div className="subtitle has-text-white has-text-centered mt-4 mb-2">
                   You can leave feedback before you swipe.
-                </div>
-                <div className="columns m-0">
+                </div> */}
+                <div className="columns m-0 mt-2">
                   <form
                     onSubmit={(e) => onSubmit(e, pitches[0].id)}
                     style={{ display: "contents" }}
@@ -87,10 +96,15 @@ export default function SwipePage(props) {
                     <input
                       className="input is-four-fifths column"
                       type="text"
-                      placeholder="Enter comment"
+                      placeholder="leave a comment before you swipe"
                       name="pitch-comment"
                     />
-                    <button className="button is-primary ml-1">Submit</button>
+                    <button
+                      className={`button ml-1 mb-3 ${anybody.className}`}
+                      style={{ color: "#f5c984", border: "2px solid #f5c984" }}
+                    >
+                      Submit
+                    </button>
                   </form>
                 </div>
               </div>

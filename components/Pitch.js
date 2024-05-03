@@ -1,5 +1,12 @@
 import * as db from "../database";
 import { useReward } from "react-rewards";
+import { Antonio, IBM_Plex_Sans, Lora } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const antonio = Antonio({ subsets: ["latin"] });
+const ibm_sans = IBM_Plex_Sans({ weight: "300", subsets: ["latin"] });
+const lora = Lora({weight: "500", subsets: ["latin"] });
+
 
 export default function Pitch({ pitch, user, getUnreadPitches }) {
   // const { reward, isAnimating } = useReward("rewardId", "confetti");
@@ -30,50 +37,51 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
     <div
       className="card"
       style={{
-        height: "450px",
+        height: "440px",
         width: "450px",
         position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        fontFamily: `${pitch.pitchFont}` || `${ibm_sans.className}`,
         background: `${pitch.pitchColor}` || "white",
+        color: `${pitch.pitchFontColor}` || "black",
       }}
     >
       <div className="card-content">
-        <p className="title is-5">{pitch.pitchTitle}</p>
-        <p className="title">{pitch.pitchDescription}</p>
-        <p className="subtitle is-6 mt-2">@{pitch.pitchCreatorName}</p>
+        <p className="is-size-5">{pitch.pitchTitle}:</p>
+        <p className={`is-size-2`}>
+          {pitch.pitchDescription}
+        </p>
+        <p className="is-size-6 mt-2">@{pitch.pitchCreatorName}</p>
       </div>
       <footer
-        className="card-footer"
+        className="card-footer p-3 has-background-light"
         style={{ position: "absolute", bottom: "0", width: "100%" }}
       >
         <button
           href="#"
-          className="button card-footer-item has-background-danger p-0"
+          className="button m-1 card-footer-item is-large"
           disabled={isDislikeAnimating}
           onClick={() => {
             onPitchDisliked();
             dislikeReward();
           }}
         >
-          <span id="dislikeRewardsId" />
-          <img
-            src="/cross-small.svg"
-            style={{ height: "100%", width: "15%" }}
-          ></img>
+          <span id="dislikeRewardsId" className="icon" />
+          👎
         </button>
         <button
           href="#"
-          className="button card-footer-item has-background-success p-0"
+          className="button m-1 card-footer-item is-large is-outlined"
           disabled={isLikeAnimating}
           onClick={() => {
             onPitchLiked();
             likeReward();
           }}
         >
-          <span id="likeRewardsId" />
-          <img src="/heart.svg" style={{ height: "100%", width: "13%" }}></img>
+          <span id="likeRewardsId" className="icon" />
+          ❤️
         </button>
       </footer>
     </div>

@@ -11,6 +11,8 @@ const anybody = Anybody({ weight: "300", subsets: ["latin"] });
 export default function SwipePage(props) {
   const [pitches, setPitches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
   let currentEmail;
 
   const getUnreadPitches = async () => {
@@ -52,6 +54,14 @@ export default function SwipePage(props) {
 
     // Clear the input field value
     e.target["pitch-comment"].value = "";
+
+    // Set submission success state to true
+    setSubmissionSuccess(true);
+
+    // Reset submission success state after 3 seconds
+    setTimeout(() => {
+      setSubmissionSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -100,13 +110,17 @@ export default function SwipePage(props) {
                       name="pitch-comment"
                     />
                     <button
-                      className={`button ml-1 mb-3 is-hovered ${anybody.className}`}
-                      // style={{ color: "#f5c984", border: "2px solid #f5c984" }}
+                      className={`button ml-1 is-hovered ${anybody.className}`}
                     >
                       Submit
                     </button>
                   </form>
                 </div>
+                {submissionSuccess ? (
+                  <p className="has-text-light mt-1">Comment Added</p>
+                ) : (
+                  <p className="mt-1">&nbsp;</p>
+                )}
               </div>
             ) : (
               <p>There are no pitches to display.</p>

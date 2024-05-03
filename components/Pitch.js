@@ -49,10 +49,14 @@ export default function Pitch({ pitch, user, getUnreadPitches }) {
     >
       <div
         className={`card-content ${ibm_sans.className} `}
-        style={{ height: "50%" }}
+        style={{ height: "70%" }}
       >
         <p className="is-size-5">{pitch.pitchTitle}:</p>
-        <p className={`is-size-2`}>{pitch.pitchDescription}</p>
+        <p
+          className={`${pitch.pitchDescription.length > 170 ? "is-size-5" : pitch.pitchDescription.length > 100 ? "is-size-4" : "is-size-3"} `}
+        >
+          {pitch.pitchDescription}
+        </p>
         <p className="is-size-6 mt-2">@{pitch.pitchCreatorName}</p>
       </div>
       <footer

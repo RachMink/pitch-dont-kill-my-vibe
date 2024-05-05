@@ -101,10 +101,11 @@ export default function Home(props) {
                       </div>
                     </div>
                     <p className="title">
-                      If you're someone in{" "}<br/>
+                      If you're someone in <br />
                       <span className="title" style={{ color: "#f5c984" }}>
                         Venture Capital
-                      </span>...
+                      </span>
+                      ...
                     </p>
 
                     <p className="subtitle p-2">Find Potential Investments</p>
@@ -116,7 +117,7 @@ export default function Home(props) {
                       liked and update any comments you see fit. Reach out to
                       promising entrepreneurs early on and build connections.{" "}
                     </p>
-                    {props.userType === "" && (
+                    {(props.userType === null || props.userType === "") && (
                       <Link href="/login">
                         <button
                           className={`button mt-4 ${antonio.className}`}
@@ -160,7 +161,7 @@ export default function Home(props) {
                       investors and use that to make informed decisions about
                       your business direction.
                     </p>
-                    {props.userType === "" && (
+                    {(props.userType === null || props.userType === "") && (
                       <Link href="/login">
                         <button
                           className={`button is-secondary mt-4 ${antonio.className}`}

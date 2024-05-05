@@ -22,7 +22,7 @@ General:
 ✅- edit styling of pitch to be more like insta story post
 ✅- add loading spinner
 ✅- Add description of app in scroll
-❌- update Figma wireframes
+✅- update Figma wireframes
 ✅- Deployment
 ✅- remove next-auth from package.json (not used?)
 ✅- Don't need to use API?
